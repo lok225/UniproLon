@@ -16,6 +16,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        let data = MonthItem(tempUnigoCount: 0, tempTimeWorked: 9)
+        let data1 = MonthItem()
+        
+        print("\(data.stringFromDate())")
+        print(data1.timeWorked)
+
         return true
     }
 

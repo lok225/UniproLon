@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15A279b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="qyQ-md-eui">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Unipro_Løn" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +17,321 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Rest løn i alt: 1000,-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OVu-Dg-Ffy">
+                                <rect key="frame" x="224" y="81" width="152" height="21"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="ckY-ZM-8T5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="ckY-ZM-8T5"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="ckY-ZM-8T5"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="JsQ-Td-9kt">
+                                <rect key="frame" x="210" y="323" width="181" height="236"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="vHL-YW-GOA">
+                                        <rect key="frame" x="0.0" y="0.0" width="181" height="236"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Tid arbejdet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J7d-4v-wo8">
+                                                <rect key="frame" x="44" y="0.0" width="93" height="59"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <variation key="widthClass=compact" ambiguous="YES">
+                                                    <rect key="frame" x="44" y="0.0" width="93" height="59"/>
+                                                </variation>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="0:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="6xN-IT-hD3">
+                                                <rect key="frame" x="42" y="59" width="98" height="59"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="50"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <variation key="widthClass=compact" ambiguous="YES">
+                                                    <rect key="frame" x="42" y="59" width="98" height="59"/>
+                                                </variation>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Tilføj" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y3u-bq-qM1">
+                                                <rect key="frame" x="67" y="118" width="47" height="59"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Qk9-xf-0Ym">
+                                                <rect key="frame" x="0.0" y="177" width="181" height="59"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XG3-O0-bup">
+                                                        <rect key="frame" x="0.0" y="15" width="30" height="30"/>
+                                                        <animations/>
+                                                        <state key="normal" title="-60">
+                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xp1-NX-893">
+                                                        <rect key="frame" x="30" y="15" width="31" height="30"/>
+                                                        <animations/>
+                                                        <state key="normal" title="-30">
+                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <variation key="widthClass=compact" ambiguous="YES">
+                                                            <rect key="frame" x="30" y="15" width="31" height="30"/>
+                                                        </variation>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8dw-t4-wjO">
+                                                        <rect key="frame" x="61" y="15" width="30" height="30"/>
+                                                        <animations/>
+                                                        <state key="normal" title="-15">
+                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QnK-9T-7AB">
+                                                        <rect key="frame" x="91" y="15" width="30" height="30"/>
+                                                        <animations/>
+                                                        <state key="normal" title="+15">
+                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jOt-bF-55H">
+                                                        <rect key="frame" x="121" y="15" width="30" height="30"/>
+                                                        <animations/>
+                                                        <state key="normal" title="+30">
+                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7HW-c9-8MO">
+                                                        <rect key="frame" x="151" y="15" width="30" height="30"/>
+                                                        <animations/>
+                                                        <state key="normal" title="+60">
+                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                    </button>
+                                                </subviews>
+                                                <animations/>
+                                                <variation key="widthClass=compact" ambiguous="YES">
+                                                    <rect key="frame" x="0.0" y="177" width="181" height="59"/>
+                                                </variation>
+                                            </stackView>
+                                        </subviews>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstItem="Qk9-xf-0Ym" firstAttribute="leading" secondItem="vHL-YW-GOA" secondAttribute="leading" id="cb7-uO-X0e"/>
+                                            <constraint firstAttribute="trailing" secondItem="Qk9-xf-0Ym" secondAttribute="trailing" id="npW-a4-4vI"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="cb7-uO-X0e"/>
+                                                <exclude reference="npW-a4-4vI"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="widthClass=compact" ambiguous="YES">
+                                            <rect key="frame" x="0.0" y="0.0" width="181" height="236"/>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="cb7-uO-X0e"/>
+                                                <include reference="npW-a4-4vI"/>
+                                            </mask>
+                                        </variation>
+                                    </stackView>
+                                </subviews>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstItem="vHL-YW-GOA" firstAttribute="top" secondItem="JsQ-Td-9kt" secondAttribute="topMargin" id="MyM-QE-4Xh"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="MyM-QE-4Xh"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="MyM-QE-4Xh"/>
+                                    </mask>
+                                </variation>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" distribution="fillEqually" alignment="center" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="wks-T8-xaE">
+                                <rect key="frame" x="210" y="192" width="181" height="123"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Unigo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Zf-eh-tTA">
+                                        <rect key="frame" x="68" y="0.0" width="46" height="30"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="10 Unigo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oZz-Am-WXV">
+                                        <rect key="frame" x="57" y="31" width="68" height="30"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Tilføj" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qKI-Ie-hLb">
+                                        <rect key="frame" x="72" y="62" width="37" height="30"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Lsb-4k-boM">
+                                        <rect key="frame" x="0.0" y="93" width="181" height="30"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RFc-Sv-Tv0">
+                                                <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                                <animations/>
+                                                <state key="normal" title="-10">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cQ9-Vk-YeJ">
+                                                <rect key="frame" x="30" y="0.0" width="30" height="30"/>
+                                                <animations/>
+                                                <state key="normal" title="-5">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dc4-pJ-VR3">
+                                                <rect key="frame" x="60" y="0.0" width="31" height="30"/>
+                                                <animations/>
+                                                <state key="normal" title="-1">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <variation key="widthClass=compact" ambiguous="YES">
+                                                    <rect key="frame" x="60" y="0.0" width="31" height="30"/>
+                                                </variation>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ea-oL-8Pk">
+                                                <rect key="frame" x="91" y="0.0" width="30" height="30"/>
+                                                <animations/>
+                                                <state key="normal" title="+1">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xi4-0U-ute">
+                                                <rect key="frame" x="121" y="0.0" width="30" height="30"/>
+                                                <animations/>
+                                                <state key="normal" title="+5">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4mb-D8-P9h">
+                                                <rect key="frame" x="151" y="0.0" width="30" height="30"/>
+                                                <animations/>
+                                                <state key="normal" title="+10">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                        <animations/>
+                                        <variation key="widthClass=compact" ambiguous="YES">
+                                            <rect key="frame" x="0.0" y="93" width="181" height="30"/>
+                                        </variation>
+                                    </stackView>
+                                </subviews>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstItem="Lsb-4k-boM" firstAttribute="leading" secondItem="wks-T8-xaE" secondAttribute="leading" id="ENH-sx-55O"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="ENH-sx-55O"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="ENH-sx-55O"/>
+                                    </mask>
+                                </variation>
+                            </stackView>
+                        </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="wks-T8-xaE" secondAttribute="trailing" id="0gR-U0-tNn"/>
+                            <constraint firstItem="wks-T8-xaE" firstAttribute="top" secondItem="OVu-Dg-Ffy" secondAttribute="bottom" constant="8" id="3J4-Ny-Tnz"/>
+                            <constraint firstItem="vHL-YW-GOA" firstAttribute="height" secondItem="wks-T8-xaE" secondAttribute="height" id="5BH-fW-JHq"/>
+                            <constraint firstItem="wks-T8-xaE" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Rer-6S-kS1"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="JsQ-Td-9kt" secondAttribute="trailing" id="RmH-BP-QLI"/>
+                            <constraint firstItem="OVu-Dg-Ffy" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="fcU-tT-DcU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="OVu-Dg-Ffy" secondAttribute="trailing" id="gCb-ZN-ydC"/>
+                            <constraint firstItem="JsQ-Td-9kt" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="gwt-BY-cyG"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="JsQ-Td-9kt" secondAttribute="bottom" id="lTA-ax-rKl"/>
+                            <constraint firstItem="vHL-YW-GOA" firstAttribute="top" secondItem="wks-T8-xaE" secondAttribute="bottom" constant="410" id="mVt-OA-agL">
+                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                            </constraint>
+                            <constraint firstItem="OVu-Dg-Ffy" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="25" id="o5U-w7-fis"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="fcU-tT-DcU"/>
+                                <exclude reference="gCb-ZN-ydC"/>
+                                <exclude reference="o5U-w7-fis"/>
+                                <exclude reference="0gR-U0-tNn"/>
+                                <exclude reference="3J4-Ny-Tnz"/>
+                                <exclude reference="Rer-6S-kS1"/>
+                                <exclude reference="RmH-BP-QLI"/>
+                                <exclude reference="gwt-BY-cyG"/>
+                                <exclude reference="5BH-fW-JHq"/>
+                                <exclude reference="mVt-OA-agL"/>
+                                <exclude reference="lTA-ax-rKl"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="fcU-tT-DcU"/>
+                                <include reference="gCb-ZN-ydC"/>
+                                <include reference="o5U-w7-fis"/>
+                                <include reference="0gR-U0-tNn"/>
+                                <include reference="3J4-Ny-Tnz"/>
+                                <include reference="Rer-6S-kS1"/>
+                                <include reference="RmH-BP-QLI"/>
+                                <include reference="gwt-BY-cyG"/>
+                                <include reference="5BH-fW-JHq"/>
+                                <include reference="mVt-OA-agL"/>
+                                <include reference="lTA-ax-rKl"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="7iY-Gb-iIX">
+                        <barButtonItem key="rightBarButtonItem" title="Historie" id="56s-Yd-h4Z"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1117" y="387"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="k6y-LS-hXe">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qyQ-md-eui" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qzQ-Jm-0YF">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="QEy-vd-29g"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IMy-5p-HoZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="409" y="387"/>
         </scene>
     </scenes>
 </document>

@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>UnigoKit.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>Unipro Løn.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -13,6 +18,11 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>E3D45A421C07019D00CD26F3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E3D61F251C0DAFC70022550B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
