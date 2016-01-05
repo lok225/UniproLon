@@ -7,40 +7,38 @@
 //
 
 import UIKit
+import Foundation
 
-public class MonthItem: NSObject {
+class MonthItem: NSObject, NSCoding {
 
-    public var unigoCount: Int!
-    public var timeWorked: Int!
+    var unigoMade: Int!
+    var timeWorked: Int!
+    var date = NSDate()
     
-    let date: NSDate!
-    
-    init(tempUnigoCount: Int, tempTimeWorked: Int) {
-        unigoCount = tempUnigoCount
-        timeWorked = tempTimeWorked
-        
-        date = NSDate()
+    init(unigoMade: Int, timeWorked: Int) {
+        self.unigoMade = unigoMade
+        self.timeWorked = timeWorked
+        super.init()
     }
     
-    override init() {
-        unigoCount = 0
-        timeWorked = 0
-        date = NSDate()
+    required init?(coder aDecoder: NSCoder) {
+        unigoMade = aDecoder.decodeIntegerForKey("UnigoMade")
+        timeWorked = aDecoder.decodeIntegerForKey("TimeWorked")
+        date = aDecoder.decodeObjectForKey("Date") as! NSDate
+        super.init()
     }
     
-    /**
-        Får String ud fra objektets dato
-    
-        - returns: En string i formatet Januar 2016
-    */
-    public func stringFromDate() -> String {
-        
-        let dateFormatter = NSDateFormatter()
-        
-        dateFormatter.dateFormat = "MMMM Y"
-        
-        return dateFormatter.stringFromDate(date)
+    func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeInteger(unigoMade, forKey: "UnigoMade")
+        aCoder.encodeInteger(timeWorked, forKey: "TimeWorked")
+        aCoder.encodeObject(date, forKey: "Date")
     }
     
+    func getTotalMoney() -> Int {
+        let unigoMadeMoney = unigoMade * 10
+        let timeWorkedMoney = timeWorked*80/60
+        
+        return unigoMadeMoney + timeWorkedMoney
+    }
     
 }
