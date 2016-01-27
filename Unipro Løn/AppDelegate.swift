@@ -19,14 +19,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
 
         let navigationController = window!.rootViewController as! UINavigationController
-        navigationController.navigationBar.barTintColor = UIColor.grayColor()
+        
         
         let controller = navigationController.viewControllers[0] as! MainViewController
-        
         controller.dataModel = dataModel
+        
+        
+        let notificationSettings = UIUserNotificationSettings(forTypes: [.Alert, .Sound], categories: nil)
+        UIApplication.sharedApplication().registerUserNotificationSettings( notificationSettings)
 
+        let localNotification = UILocalNotification()
+        localNotification.alertBody = "Send Mail"
+        let components = NSDateComponents()
+        components.year = 2016
+        components.month = 1
+        components.day = 19
+        components.hour = 20
+        components.minute = 0
+    
+        let currentCalendar = NSCalendar.currentCalendar()
+        let date = currentCalendar.dateFromComponents(components)
+        localNotification.fireDate = date!
+        localNotification.repeatInterval = NSCalendarUnit.Month
+        localNotification.timeZone = NSTimeZone.defaultTimeZone()
+        localNotification.soundName = UILocalNotificationDefaultSoundName
+        
+        UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
         
         return true
+    }
+    
+    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+    }
+    
+    func application(application: UIApplication, performActionForShortcutItem shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void) {
+        let navigationController = window!.rootViewController as! UINavigationController
+        let controller = navigationController.viewControllers[0] as! MainViewController
+        controller.sendSpecielMail()
     }
 
     func applicationWillResignActive(application: UIApplication) {

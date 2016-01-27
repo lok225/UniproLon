@@ -8,7 +8,7 @@
 
 import Foundation
 
-class DataModel {
+public class DataModel {
     
     let kFirstTime = "FirstTime"
     
@@ -16,8 +16,11 @@ class DataModel {
     
     init() {
         loadMonthItems()
-        registerDefaults()
-        handleFirstTime()
+        if monthItems.count == 0 {
+            monthItems.append(MonthItem(unigoMade: 0, timeWorked: 0))
+        }
+        // registerDefaults()
+        // handleFirstTime()
     }
     
     // MARK: - Defaults
@@ -31,8 +34,11 @@ class DataModel {
     func handleFirstTime() {
         
         let defaults = NSUserDefaults.standardUserDefaults()
+        let firstTime = defaults.boolForKey(kFirstTime)
+        
+        print(firstTime)
 
-        if defaults.boolForKey(kFirstTime) {
+        if firstTime {
             let item = MonthItem(unigoMade: 0, timeWorked: 0)
             monthItems.append(item)
             defaults.setBool(false, forKey: kFirstTime)
@@ -75,10 +81,19 @@ class DataModel {
                 monthItems = unarchiver.decodeObjectForKey("MonthItems") as! [MonthItem]
                 
                 unarchiver.finishDecoding()
-                print("loaded")
+                
+                sortChecklists()
             }
         }
         
+    }
+    
+    // TODO: - Test
+    
+    func sortChecklists() {
+        monthItems.sortInPlace { (monthItem1, monthItem2) -> Bool in
+            monthItem1.date.compare(monthItem2.date) == .OrderedDescending
+        }
     }
 
     

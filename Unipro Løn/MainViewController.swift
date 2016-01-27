@@ -28,6 +28,11 @@ class MainViewController: UIViewController, MFMailComposeViewControllerDelegate 
         updateAllViews()
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(true)
+        self.updateAllViews()
+    }
+    
     // MARK: - Update Views
     
     func updateAllViews() {
@@ -37,27 +42,23 @@ class MainViewController: UIViewController, MFMailComposeViewControllerDelegate 
     }
     
     func updateTotalMoneyLabel() {
-        let totalMoney = dataModel.monthItems[getArrayCount()].getTotalMoney()
+        let totalMoney = dataModel.monthItems.first!.getTotalMoney()
         lblThisMonthSalary.text = "Rest løn i alt: \(totalMoney),-"
     }
     
     func updateUnigosMadeLabel() {
-        let unigosMade = dataModel.monthItems[getArrayCount()].unigoMade
+        let unigosMade = dataModel.monthItems.first!.unigoMade
         lblUnigosMade.text = "\(unigosMade)"
     }
     
     func updateTimeWorkedLabel() {
-        let hoursWorked = dataModel.monthItems[getArrayCount()].timeWorked / 60
-        let minutesWorked = dataModel.monthItems[getArrayCount()].timeWorked % 60
-        let totalTime = String(format: "%01d:%02d", hoursWorked, minutesWorked)
-        // lblTimeWorked.text = "\(hoursWorked):\(minutesWorked)"
-        lblTimeWorked.text = totalTime
+        lblTimeWorked.text = dataModel.monthItems.first!.getFormattedTimeWorkedAsText(false)
     }
     
     // MARK: - @IBActions
     
     @IBAction func unigoButtonPressed(sender: UIButton) {
-        var monthItem = dataModel.monthItems[getArrayCount()].unigoMade!
+        var monthItem = dataModel.monthItems.first!.unigoMade!
         
         switch sender.tag {
         case 1:
@@ -76,14 +77,14 @@ class MainViewController: UIViewController, MFMailComposeViewControllerDelegate 
             break
         }
         
-        dataModel.monthItems[getArrayCount()].unigoMade = monthItem
+        dataModel.monthItems.first!.unigoMade = monthItem
         
         updateUnigosMadeLabel()
         updateTotalMoneyLabel()
     }
     
     @IBAction func timeButtonPressed(sender: UIButton) {
-        var monthItem = dataModel.monthItems[getArrayCount()].timeWorked!
+        var monthItem = dataModel.monthItems.first!.timeWorked!
         
         switch sender.tag {
         case 15:
@@ -102,36 +103,93 @@ class MainViewController: UIViewController, MFMailComposeViewControllerDelegate 
             break
         }
         
-        dataModel.monthItems[getArrayCount()].timeWorked = monthItem
+        dataModel.monthItems.first!.timeWorked = monthItem
         
         updateTimeWorkedLabel()
         updateTotalMoneyLabel()
     }
     
     @IBAction func sendMail() {
-        if MFMailComposeViewController.canSendMail() {
-           let mailVC = MFMailComposeViewController()
-            mailVC.mailComposeDelegate = self
-            mailVC.setToRecipients(["Martinlok@icloud.com"])
-            mailVC.setSubject("Løn")
-            mailVC.setMessageBody("Her er min løn", isHTML: false)
-            
-            self.presentViewController(mailVC, animated: true, completion: nil)
+        sendSpecielMail()
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "HistorySegue" {
+            let controller = segue.destinationViewController as! HistoryViewController
+            controller.dataModel = self.dataModel
         }
     }
     
     // MARK: - MFMessageComposeViewControllerDelegate
     
-    func messageComposeViewController(controller: MFMessageComposeViewController, didFinishWithResult result: MessageComposeResult) {
+    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
         
+        switch result.rawValue {
+        case MFMailComposeResultCancelled.rawValue:
+            print("Cancelled")
+            controller.dismissViewControllerAnimated(true, completion: { () -> Void in
+                let alert = createAlertWithTitle("Fejl", message: "Du har annuleret mailen")
+                self.presentViewController(alert, animated: true, completion: nil)
+            })
+        case MFMailComposeResultFailed.rawValue:
+            print("Failed")
+            break
+        case MFMailComposeResultSent.rawValue:
+            print("Sent")
+            self.dataModel.monthItems.first!.endDate = NSDate()
+            
+            let item = MonthItem()
+            self.dataModel.monthItems.append(item)
+            self.dataModel.sortChecklists()
+            self.updateAllViews()
+            
+            controller.dismissViewControllerAnimated(true, completion: nil)
+        default:
+            break
+        }
     }
     
     
     // MARK: - Helper Functions
     
-    func getArrayCount() -> Int {
-        let arrayCount = dataModel.monthItems.count - 1
-        return arrayCount
+    func sendSpecielMail() {
+        let item = dataModel.monthItems.first!
+        
+        if item.getTotalMoney() != 0 {
+            if MFMailComposeViewController.canSendMail() {
+                let mailVC = MFMailComposeViewController()
+                mailVC.mailComposeDelegate = self
+                mailVC.setToRecipients(["Martinlok@icloud.com"])
+                mailVC.setSubject("Løn")
+                mailVC.setMessageBody(createMailString(), isHTML: false)
+                
+                self.presentViewController(mailVC, animated: true, completion: nil)
+            } else {
+                let alert = createAlertWithTitle("Advarsel", message: "Kan ikke sende mail fra denne enhed")
+                self.presentViewController(alert, animated: true, completion: nil)
+            }
+        } else {
+            let alert = createAlertWithTitle("Advarsel", message: "Ingen data tilføjet denne måned")
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+    }
+    
+    func createMailString() -> String {
+        let item = dataModel.monthItems.first!
+        
+        let firstString = "Hej Jeanette \n\n"
+        var mainString = ""
+        let finalString = "\n\nMvh. Martin Lok"
+        
+        if item.unigoMade != 0 && item.timeWorked != 0 {
+            mainString = "I denne måned har jeg lavet \(item.unigoMade) Unigo og arbejdet i \(item.getFormattedTimeWorkedAsText(true)!). Det skulle gerne blive til \(item.getTotalMoney()),-"
+        } else if item.unigoMade != 0 && item.timeWorked == 0 {
+            mainString = "I denne måned har jeg lavet \(item.unigoMade) Unigo. Det skulle gerne blive til \(item.getTotalMoney()),-"
+        } else if item.unigoMade == 0 && item.timeWorked != 0 {
+            mainString = "I denne måned har jeg ikke lavet nogle Unigo, men har arbejdet i \(item.getFormattedTimeWorkedAsText(true)!). Det skulle gerne blive til \(item.getTotalMoney()),-."
+        }
+        
+        return firstString + mainString + finalString
     }
     
 
