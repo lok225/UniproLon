@@ -120,15 +120,23 @@
 			isa = PBXGroup;
 			children = (
 				E3D45A461C07019D00CD26F3 /* AppDelegate.swift */,
-				E3D45A481C07019D00CD26F3 /* MainViewController.swift */,
-				E3598B6B1C46496A006754C0 /* HistoryViewController.swift */,
+				E3DFB63C1CD162BA00E21170 /* Unipro */,
 				E3D45A4A1C07019D00CD26F3 /* Main.storyboard */,
-				E3D61F331C0DB71A0022550B /* MonthItem.swift */,
-				E3FE60051C3AA1DA00E3C737 /* DataModel.swift */,
-				E303B0571C4CF0F800D96ADC /* ExtraFunctions.swift */,
 				E3FE60071C3AABCB00E3C737 /* Extra Files */,
 			);
 			path = "Unipro Løn";
+			sourceTree = "<group>";
+		};
+		E3DFB63C1CD162BA00E21170 /* Unipro */ = {
+			isa = PBXGroup;
+			children = (
+				E3D45A481C07019D00CD26F3 /* MainViewController.swift */,
+				E3598B6B1C46496A006754C0 /* HistoryViewController.swift */,
+				E3D61F331C0DB71A0022550B /* MonthItem.swift */,
+				E3FE60051C3AA1DA00E3C737 /* DataModel.swift */,
+				E303B0571C4CF0F800D96ADC /* ExtraFunctions.swift */,
+			);
+			name = Unipro;
 			sourceTree = "<group>";
 		};
 		E3FE60071C3AABCB00E3C737 /* Extra Files */ = {
@@ -465,6 +473,7 @@
 				E37A46291C58F327004CE731 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E3D45A3E1C07019D00CD26F3 /* Build configuration list for PBXProject "Unipro Løn" */ = {
 			isa = XCConfigurationList;
