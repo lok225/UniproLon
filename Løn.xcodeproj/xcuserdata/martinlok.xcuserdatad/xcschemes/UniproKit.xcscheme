@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0710"
+   LastUpgradeVersion = "0730"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E3D45A421C07019D00CD26F3"
-               BuildableName = "Unipro L&#xf8;n.app"
-               BlueprintName = "Unipro L&#xf8;n"
-               ReferencedContainer = "container:Unipro L&#xf8;n.xcodeproj">
+               BlueprintIdentifier = "E37A461E1C58F327004CE731"
+               BuildableName = "UniproKit.framework"
+               BlueprintName = "UniproKit"
+               ReferencedContainer = "container:L&#xf8;n.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -29,15 +29,6 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E3D45A421C07019D00CD26F3"
-            BuildableName = "Unipro L&#xf8;n.app"
-            BlueprintName = "Unipro L&#xf8;n"
-            ReferencedContainer = "container:Unipro L&#xf8;n.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -51,16 +42,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E3D45A421C07019D00CD26F3"
-            BuildableName = "Unipro L&#xf8;n.app"
-            BlueprintName = "Unipro L&#xf8;n"
-            ReferencedContainer = "container:Unipro L&#xf8;n.xcodeproj">
+            BlueprintIdentifier = "E37A461E1C58F327004CE731"
+            BuildableName = "UniproKit.framework"
+            BlueprintName = "UniproKit"
+            ReferencedContainer = "container:L&#xf8;n.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -70,16 +60,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E3D45A421C07019D00CD26F3"
-            BuildableName = "Unipro L&#xf8;n.app"
-            BlueprintName = "Unipro L&#xf8;n"
-            ReferencedContainer = "container:Unipro L&#xf8;n.xcodeproj">
+            BlueprintIdentifier = "E37A461E1C58F327004CE731"
+            BuildableName = "UniproKit.framework"
+            BlueprintName = "UniproKit"
+            ReferencedContainer = "container:L&#xf8;n.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

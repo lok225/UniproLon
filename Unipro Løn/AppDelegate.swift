@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,11 +19,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
-        let tabBarController = window!.rootViewController as! UITabBarController
-        let navigationController = tabBarController.viewControllers![0] as! UINavigationController
+        NSUserDefaults.standardUserDefaults().setValue(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
+
         
-        let controller = navigationController.viewControllers[0] as! MainViewController
-        controller.dataModel = dataModel
+        let tabBarController = window!.rootViewController as! UITabBarController
+        
+        let uniproNavigationController = tabBarController.viewControllers![0] as! UINavigationController
+        let uniproController = uniproNavigationController.viewControllers[0] as! UniproMainVC
+        uniproController.dataModel = dataModel
+        
+        let fotexNavigationController = tabBarController.viewControllers![1] as! UINavigationController
+        let fotexController = fotexNavigationController.topViewController as! FotexMainVC
+        fotexController.managedObjectContext = managedObjectContext
         
         
         let notificationSettings = UIUserNotificationSettings(forTypes: [.Alert, .Sound], categories: nil)
@@ -54,7 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, performActionForShortcutItem shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void) {
         let navigationController = window!.rootViewController as! UINavigationController
-        let controller = navigationController.viewControllers[0] as! MainViewController
+        let controller = navigationController.viewControllers[0] as! UniproMainVC
         controller.sendSpecielMail()
     }
 
@@ -85,6 +93,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func saveData() {
         dataModel.saveMonthItems()
     }
+    
+    lazy var managedObjectContext: NSManagedObjectContext = {
+        guard let modelURL = NSBundle.mainBundle().URLForResource("CoreDataModel", withExtension: "momd") else {
+            fatalError("Could not find data model in app bundle")
+        }
+        guard let model = NSManagedObjectModel(contentsOfURL: modelURL) else {
+            fatalError("Error initializing model from: \(modelURL)")
+        }
+        let urls = NSFileManager.defaultManager().URLsForDirectory( .DocumentDirectory, inDomains: .UserDomainMask)
+        let documentsDirectory = urls[0]
+        let storeURL = documentsDirectory.URLByAppendingPathComponent(
+            "DataStore.sqlite")
+        do {
+            let coordinator = NSPersistentStoreCoordinator(managedObjectModel: model)
+            
+            try coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: nil)
+            let context = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
+            context.persistentStoreCoordinator = coordinator
+            return context
+        } catch {
+            fatalError("Error adding persistent store at \(storeURL): \(error)")
+        }
+    }()
 
 }
 

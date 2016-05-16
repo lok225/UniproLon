@@ -9,7 +9,7 @@
 import UIKit
 import MessageUI
 
-class MainViewController: UIViewController, MFMailComposeViewControllerDelegate {
+class UniproMainVC: UIViewController, MFMailComposeViewControllerDelegate {
     
     // Mark: Constants & Variables
     
@@ -115,7 +115,7 @@ class MainViewController: UIViewController, MFMailComposeViewControllerDelegate 
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "HistorySegue" {
-            let controller = segue.destinationViewController as! HistoryViewController
+            let controller = segue.destinationViewController as! UniproHistoryVC
             controller.dataModel = self.dataModel
         }
     }

@@ -8,17 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		E303B0581C4CF0F800D96ADC /* ExtraFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E303B0571C4CF0F800D96ADC /* ExtraFunctions.swift */; };
-		E3598B6C1C46496A006754C0 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3598B6B1C46496A006754C0 /* HistoryViewController.swift */; };
+		E3598B6C1C46496A006754C0 /* UniproHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3598B6B1C46496A006754C0 /* UniproHistoryVC.swift */; };
+		E35F5D701CD41BE500768311 /* FotexMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35F5D6F1CD41BE500768311 /* FotexMainVC.swift */; };
 		E37A46221C58F327004CE731 /* UniproKit.h in Headers */ = {isa = PBXBuildFile; fileRef = E37A46211C58F327004CE731 /* UniproKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E37A46261C58F327004CE731 /* UniproKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E37A461F1C58F327004CE731 /* UniproKit.framework */; };
 		E37A46271C58F327004CE731 /* UniproKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E37A461F1C58F327004CE731 /* UniproKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E3D45A471C07019D00CD26F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D45A461C07019D00CD26F3 /* AppDelegate.swift */; };
-		E3D45A491C07019D00CD26F3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D45A481C07019D00CD26F3 /* MainViewController.swift */; };
+		E3D45A491C07019D00CD26F3 /* UniproMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D45A481C07019D00CD26F3 /* UniproMainVC.swift */; };
 		E3D45A4C1C07019D00CD26F3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3D45A4A1C07019D00CD26F3 /* Main.storyboard */; };
 		E3D45A4E1C07019D00CD26F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3D45A4D1C07019D00CD26F3 /* Assets.xcassets */; };
 		E3D45A511C07019D00CD26F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3D45A4F1C07019D00CD26F3 /* LaunchScreen.storyboard */; };
 		E3D61F341C0DB71A0022550B /* MonthItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D61F331C0DB71A0022550B /* MonthItem.swift */; };
+		E3D7F3471CE4610900B691D9 /* Vagt+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D7F3451CE4610900B691D9 /* Vagt+CoreDataProperties.swift */; };
+		E3D7F3481CE4610900B691D9 /* Vagt.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D7F3461CE4610900B691D9 /* Vagt.swift */; };
 		E3FE60061C3AA1DA00E3C737 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FE60051C3AA1DA00E3C737 /* DataModel.swift */; };
+		E3FEE5361CE37B7F00ED0CF2 /* FotexAddVagtVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FEE5351CE37B7F00ED0CF2 /* FotexAddVagtVC.swift */; };
+		E3FEE5391CE37FE600ED0CF2 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E3FEE5371CE37FE600ED0CF2 /* CoreDataModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,19 +52,24 @@
 
 /* Begin PBXFileReference section */
 		E303B0571C4CF0F800D96ADC /* ExtraFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtraFunctions.swift; sourceTree = "<group>"; };
-		E3598B6B1C46496A006754C0 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		E3598B6B1C46496A006754C0 /* UniproHistoryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UniproHistoryVC.swift; sourceTree = "<group>"; };
+		E35F5D6F1CD41BE500768311 /* FotexMainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FotexMainVC.swift; sourceTree = "<group>"; };
 		E37A461F1C58F327004CE731 /* UniproKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UniproKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E37A46211C58F327004CE731 /* UniproKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UniproKit.h; sourceTree = "<group>"; };
 		E37A46231C58F327004CE731 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E3D45A431C07019D00CD26F3 /* Unipro Løn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Unipro Løn.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3D45A461C07019D00CD26F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E3D45A481C07019D00CD26F3 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		E3D45A481C07019D00CD26F3 /* UniproMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniproMainVC.swift; sourceTree = "<group>"; };
 		E3D45A4B1C07019D00CD26F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E3D45A4D1C07019D00CD26F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E3D45A501C07019D00CD26F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E3D45A521C07019D00CD26F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E3D61F331C0DB71A0022550B /* MonthItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthItem.swift; sourceTree = "<group>"; };
+		E3D7F3451CE4610900B691D9 /* Vagt+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Vagt+CoreDataProperties.swift"; path = "../Vagt+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E3D7F3461CE4610900B691D9 /* Vagt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Vagt.swift; path = ../Vagt.swift; sourceTree = "<group>"; };
 		E3FE60051C3AA1DA00E3C737 /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		E3FEE5351CE37B7F00ED0CF2 /* FotexAddVagtVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FotexAddVagtVC.swift; sourceTree = "<group>"; };
+		E3FEE5381CE37FE600ED0CF2 /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +97,15 @@
 				E3D45A451C07019D00CD26F3 /* Unipro Løn */,
 			);
 			name = "iOS App";
+			sourceTree = "<group>";
+		};
+		E35F5D711CD41CB700768311 /* Føtex */ = {
+			isa = PBXGroup;
+			children = (
+				E35F5D6F1CD41BE500768311 /* FotexMainVC.swift */,
+				E3FEE5351CE37B7F00ED0CF2 /* FotexAddVagtVC.swift */,
+			);
+			name = "Føtex";
 			sourceTree = "<group>";
 		};
 		E37A46201C58F327004CE731 /* UniproKit */ = {
@@ -121,7 +140,11 @@
 			children = (
 				E3D45A461C07019D00CD26F3 /* AppDelegate.swift */,
 				E3DFB63C1CD162BA00E21170 /* Unipro */,
+				E35F5D711CD41CB700768311 /* Føtex */,
 				E3D45A4A1C07019D00CD26F3 /* Main.storyboard */,
+				E3FEE5371CE37FE600ED0CF2 /* CoreDataModel.xcdatamodeld */,
+				E3D7F3451CE4610900B691D9 /* Vagt+CoreDataProperties.swift */,
+				E3D7F3461CE4610900B691D9 /* Vagt.swift */,
 				E3FE60071C3AABCB00E3C737 /* Extra Files */,
 			);
 			path = "Unipro Løn";
@@ -130,8 +153,8 @@
 		E3DFB63C1CD162BA00E21170 /* Unipro */ = {
 			isa = PBXGroup;
 			children = (
-				E3D45A481C07019D00CD26F3 /* MainViewController.swift */,
-				E3598B6B1C46496A006754C0 /* HistoryViewController.swift */,
+				E3D45A481C07019D00CD26F3 /* UniproMainVC.swift */,
+				E3598B6B1C46496A006754C0 /* UniproHistoryVC.swift */,
 				E3D61F331C0DB71A0022550B /* MonthItem.swift */,
 				E3FE60051C3AA1DA00E3C737 /* DataModel.swift */,
 				E303B0571C4CF0F800D96ADC /* ExtraFunctions.swift */,
@@ -220,7 +243,7 @@
 					};
 				};
 			};
-			buildConfigurationList = E3D45A3E1C07019D00CD26F3 /* Build configuration list for PBXProject "Unipro Løn" */;
+			buildConfigurationList = E3D45A3E1C07019D00CD26F3 /* Build configuration list for PBXProject "Løn" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -272,10 +295,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3D61F341C0DB71A0022550B /* MonthItem.swift in Sources */,
+				E3FEE5361CE37B7F00ED0CF2 /* FotexAddVagtVC.swift in Sources */,
+				E35F5D701CD41BE500768311 /* FotexMainVC.swift in Sources */,
+				E3D7F3471CE4610900B691D9 /* Vagt+CoreDataProperties.swift in Sources */,
 				E3FE60061C3AA1DA00E3C737 /* DataModel.swift in Sources */,
-				E3598B6C1C46496A006754C0 /* HistoryViewController.swift in Sources */,
+				E3598B6C1C46496A006754C0 /* UniproHistoryVC.swift in Sources */,
+				E3FEE5391CE37FE600ED0CF2 /* CoreDataModel.xcdatamodeld in Sources */,
 				E303B0581C4CF0F800D96ADC /* ExtraFunctions.swift in Sources */,
-				E3D45A491C07019D00CD26F3 /* MainViewController.swift in Sources */,
+				E3D7F3481CE4610900B691D9 /* Vagt.swift in Sources */,
+				E3D45A491C07019D00CD26F3 /* UniproMainVC.swift in Sources */,
 				E3D45A471C07019D00CD26F3 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -475,7 +503,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E3D45A3E1C07019D00CD26F3 /* Build configuration list for PBXProject "Unipro Løn" */ = {
+		E3D45A3E1C07019D00CD26F3 /* Build configuration list for PBXProject "Løn" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E3D45A531C07019D00CD26F3 /* Debug */,
@@ -494,6 +522,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E3FEE5371CE37FE600ED0CF2 /* CoreDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E3FEE5381CE37FE600ED0CF2 /* CoreDataModel.xcdatamodel */,
+			);
+			currentVersion = E3FEE5381CE37FE600ED0CF2 /* CoreDataModel.xcdatamodel */;
+			path = CoreDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = E3D45A3B1C07019D00CD26F3 /* Project object */;
 }

@@ -1,5 +1,5 @@
 //
-//  HistoryViewController.swift
+//  UniproHistoryVC.swift
 //  Unipro Løn
 //
 //  Created by Martin Lok on 13/01/2016.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HistoryViewController: UITableViewController {
+class UniproHistoryVC: UITableViewController {
 
     var dataModel: DataModel!
     
