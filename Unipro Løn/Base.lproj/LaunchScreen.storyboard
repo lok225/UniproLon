@@ -16,19 +16,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Unipro" translatesAutoresizingMaskIntoConstraints="NO" id="Kfw-PR-Xmt">
-                                <rect key="frame" x="150" y="150" width="300" height="300"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="Oxq-Y4-NwO"/>
-                                    <constraint firstAttribute="width" constant="300" id="Zbv-lN-PMJ"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unipro Løn" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Gf-ng-59m">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Løn" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Gf-ng-59m">
                                 <rect key="frame" x="150" y="62" width="300" height="55"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="KOm-Ak-Ar0"/>
-                                    <constraint firstAttribute="height" constant="55" id="pOT-Ad-V2S"/>
+                                    <constraint firstAttribute="width" constant="300" id="OEA-6S-Fvf"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="44"/>
                                 <nil key="highlightedColor"/>
@@ -41,13 +34,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="0Gf-ng-59m" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" priority="500" constant="42" id="1VK-Ux-HCm"/>
-                            <constraint firstItem="0Gf-ng-59m" firstAttribute="leading" secondItem="Kfw-PR-Xmt" secondAttribute="leading" id="2KI-gz-cKb"/>
-                            <constraint firstItem="0Gf-ng-59m" firstAttribute="trailing" secondItem="Kfw-PR-Xmt" secondAttribute="trailing" id="H4q-eZ-Zvt"/>
-                            <constraint firstItem="Kfw-PR-Xmt" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="UMu-tg-4Xa"/>
-                            <constraint firstItem="Kfw-PR-Xmt" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="Xtg-y5-ezj"/>
-                            <constraint firstItem="Kfw-PR-Xmt" firstAttribute="top" secondItem="0Gf-ng-59m" secondAttribute="bottom" priority="500" constant="33" id="ktq-e0-lOU"/>
-                            <constraint firstItem="0Gf-ng-59m" firstAttribute="width" secondItem="Kfw-PR-Xmt" secondAttribute="width" id="oxF-Mp-WEi"/>
+                            <constraint firstItem="0Gf-ng-59m" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="42" id="CbT-Wn-Bbv"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="0Gf-ng-59m" secondAttribute="bottom" constant="483" id="Du2-nQ-Zvs"/>
+                            <constraint firstItem="0Gf-ng-59m" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="YJ2-0S-66U"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -56,7 +45,4 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="Unipro" width="300" height="300"/>
-    </resources>
 </document>

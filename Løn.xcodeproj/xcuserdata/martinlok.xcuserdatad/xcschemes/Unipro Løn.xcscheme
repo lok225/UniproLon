@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E3D45A421C07019D00CD26F3"
-               BuildableName = "Unipro L&#xf8;n.app"
+               BuildableName = "Unipro L&#xf8;n.temp_caseinsensitive_rename.app"
                BlueprintName = "Unipro L&#xf8;n"
                ReferencedContainer = "container:L&#xf8;n.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E3D45A421C07019D00CD26F3"
-            BuildableName = "Unipro L&#xf8;n.app"
+            BuildableName = "Unipro L&#xf8;n.temp_caseinsensitive_rename.app"
             BlueprintName = "Unipro L&#xf8;n"
             ReferencedContainer = "container:L&#xf8;n.xcodeproj">
          </BuildableReference>
@@ -56,7 +56,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E3D45A421C07019D00CD26F3"
-            BuildableName = "Unipro L&#xf8;n.app"
+            BuildableName = "Unipro L&#xf8;n.temp_caseinsensitive_rename.app"
             BlueprintName = "Unipro L&#xf8;n"
             ReferencedContainer = "container:L&#xf8;n.xcodeproj">
          </BuildableReference>
@@ -75,7 +75,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E3D45A421C07019D00CD26F3"
-            BuildableName = "Unipro L&#xf8;n.app"
+            BuildableName = "Unipro L&#xf8;n.temp_caseinsensitive_rename.app"
             BlueprintName = "Unipro L&#xf8;n"
             ReferencedContainer = "container:L&#xf8;n.xcodeproj">
          </BuildableReference>

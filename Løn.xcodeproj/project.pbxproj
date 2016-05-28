@@ -57,7 +57,7 @@
 		E37A461F1C58F327004CE731 /* UniproKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UniproKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E37A46211C58F327004CE731 /* UniproKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UniproKit.h; sourceTree = "<group>"; };
 		E37A46231C58F327004CE731 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E3D45A431C07019D00CD26F3 /* Unipro Løn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Unipro Løn.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E3D45A431C07019D00CD26F3 /* Unipro Løn.temp_caseinsensitive_rename.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Unipro Løn.temp_caseinsensitive_rename.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3D45A461C07019D00CD26F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E3D45A481C07019D00CD26F3 /* UniproMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniproMainVC.swift; sourceTree = "<group>"; };
 		E3D45A4B1C07019D00CD26F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -94,7 +94,7 @@
 		E350F40C1C107AA40023CA33 /* iOS App */ = {
 			isa = PBXGroup;
 			children = (
-				E3D45A451C07019D00CD26F3 /* Unipro Løn */,
+				E3D45A451C07019D00CD26F3 /* Løn */,
 			);
 			name = "iOS App";
 			sourceTree = "<group>";
@@ -117,6 +117,16 @@
 			path = UniproKit;
 			sourceTree = "<group>";
 		};
+		E3926F2D1CEA28D100431AD8 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				E3FEE5371CE37FE600ED0CF2 /* CoreDataModel.xcdatamodeld */,
+				E3D7F3451CE4610900B691D9 /* Vagt+CoreDataProperties.swift */,
+				E3D7F3461CE4610900B691D9 /* Vagt.swift */,
+			);
+			name = "Core Data";
+			sourceTree = "<group>";
+		};
 		E3D45A3A1C07019D00CD26F3 = {
 			isa = PBXGroup;
 			children = (
@@ -129,24 +139,23 @@
 		E3D45A441C07019D00CD26F3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E3D45A431C07019D00CD26F3 /* Unipro Løn.app */,
+				E3D45A431C07019D00CD26F3 /* Unipro Løn.temp_caseinsensitive_rename.app */,
 				E37A461F1C58F327004CE731 /* UniproKit.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		E3D45A451C07019D00CD26F3 /* Unipro Løn */ = {
+		E3D45A451C07019D00CD26F3 /* Løn */ = {
 			isa = PBXGroup;
 			children = (
 				E3D45A461C07019D00CD26F3 /* AppDelegate.swift */,
 				E3DFB63C1CD162BA00E21170 /* Unipro */,
 				E35F5D711CD41CB700768311 /* Føtex */,
 				E3D45A4A1C07019D00CD26F3 /* Main.storyboard */,
-				E3FEE5371CE37FE600ED0CF2 /* CoreDataModel.xcdatamodeld */,
-				E3D7F3451CE4610900B691D9 /* Vagt+CoreDataProperties.swift */,
-				E3D7F3461CE4610900B691D9 /* Vagt.swift */,
+				E3926F2D1CEA28D100431AD8 /* Core Data */,
 				E3FE60071C3AABCB00E3C737 /* Extra Files */,
 			);
+			name = "Løn";
 			path = "Unipro Løn";
 			sourceTree = "<group>";
 		};
@@ -220,7 +229,7 @@
 			);
 			name = "Unipro Løn";
 			productName = "Unipro Løn";
-			productReference = E3D45A431C07019D00CD26F3 /* Unipro Løn.app */;
+			productReference = E3D45A431C07019D00CD26F3 /* Unipro Løn.temp_caseinsensitive_rename.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -471,8 +480,8 @@
 				INFOPLIST_FILE = "Unipro Løn/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.martinlok.Unipro-L-n";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.martinlok.lon;
+				PRODUCT_NAME = "Unipro Løn.temp_caseinsensitive_rename";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -485,8 +494,8 @@
 				INFOPLIST_FILE = "Unipro Løn/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.martinlok.Unipro-L-n";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.martinlok.lon;
+				PRODUCT_NAME = "Unipro Løn.temp_caseinsensitive_rename";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

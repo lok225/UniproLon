@@ -17,5 +17,6 @@ extension Vagt {
     @NSManaged var endTime: NSDate!
     @NSManaged var startTime: NSDate!
     @NSManaged var penge: Float
+    
 
 }

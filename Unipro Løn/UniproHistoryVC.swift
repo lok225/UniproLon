@@ -14,6 +14,8 @@ class UniproHistoryVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.allowsSelection = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,7 +34,6 @@ class UniproHistoryVC: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return 1
     }
-
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         

@@ -27,22 +27,46 @@ class FotexMainVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
     
     var vagter = [Vagt]()
     
+    var måneder: [[Vagt]] {
+        
+        return [[Vagt()]]
+    }
+    
+    var totalLon: Double = 0.0 {
+        didSet {
+            lblFøtexTotalLøn.text = String(Int(totalLon)) + ",-"
+            lblFøtexAM.text = "Efter AM: " + String(totalAM) + ",-"
+        }
+    }
+    var tillæg: Double = 0.0 {
+        didSet {
+            lblFøtexTillæg.text = "Deraf tillæg: " + String(tillæg) + ",-"
+        }
+    }
+    var antalTimer: Double = 0.0 {
+        didSet {
+            lblFøtexTimer.text = "Antal timer: " + String(antalTimer)
+        }
+    }
+    var antalVagter: Int = 0 {
+        didSet {
+            lblFøtexVagter.text = "Antal vagter: " + String(antalVagter)
+        }
+    }
+    var totalAM: Double {
+        return totalLon * 0.92
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let fetchRequest = NSFetchRequest()
-        let entity = NSEntityDescription.entityForName("Vagt", inManagedObjectContext: managedObjectContext)
-        fetchRequest.entity = entity
+        setupCoreData()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
         
-        let sortDescriptor = NSSortDescriptor(key: "endTime", ascending: false)
-        fetchRequest.sortDescriptors = [sortDescriptor]
-        
-        do {
-            let fetchedVagter = try managedObjectContext.executeFetchRequest(fetchRequest)
-            vagter = fetchedVagter as! [Vagt]
-        } catch {
-            fatalError("Error: \(error)")
-        }
+        calculateTotalLon()
     }
     
     // MARK: - UITableViewDelegate
@@ -51,9 +75,26 @@ class FotexMainVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
         
         performSegueWithIdentifier("AddVagt", sender: indexPath)
         
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        cell?.selected = false
     }
     
     // MARK: - UITableViewDataSource
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
+        let vagt = vagter[0]
+        let component = NSCalendar.currentCalendar().components([.Month, .Year], fromDate: vagt.startTime)
+        let formatter = NSDateComponentsFormatter()
+        formatter.unitsStyle = .Full
+        let string = formatter.stringFromDateComponents(component)
+        
+        return string
+    }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -64,15 +105,29 @@ class FotexMainVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
         
         let cell = UITableViewCell()
         
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.timeStyle = .ShortStyle
-        dateFormatter.dateStyle = .ShortStyle
+        let startTimeFormatter = NSDateFormatter()
+        startTimeFormatter.timeStyle = .ShortStyle
+        startTimeFormatter.dateStyle = .FullStyle
+        let startDate = vagter[indexPath.row].startTime!
+        let startTimeString = startTimeFormatter.stringFromDate(startDate)
         
-        let date = vagter[indexPath.row].endTime!
+        let endTimeFormatter = NSDateFormatter()
+        endTimeFormatter.timeStyle = .ShortStyle
+        endTimeFormatter.dateStyle = .NoStyle
+        let endDate = vagter[indexPath.row].endTime!
+        let endTimeString = endTimeFormatter.stringFromDate(endDate)
         
-        cell.textLabel?.text = dateFormatter.stringFromDate(date)
+        cell.textLabel?.text = startTimeString + " - " + endTimeString
         
         return cell
+    }
+    
+    // Override to support conditional editing of the table view.
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            tableView.editing = false
+        }
     }
     
     
@@ -88,6 +143,33 @@ class FotexMainVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
                 let thisVagt = vagter[indexPath.row]
                 controller.vagtToEdit = thisVagt
             }
+        }
+    }
+    
+    // MARK: - Helper Functions
+    
+    
+    private func setupCoreData() {
+        
+        let fetchRequest = NSFetchRequest()
+        let entity = NSEntityDescription.entityForName("Vagt", inManagedObjectContext: managedObjectContext)
+        fetchRequest.entity = entity
+        
+        let sortDescriptor = NSSortDescriptor(key: "endTime", ascending: false)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        do {
+            let fetchedVagter = try managedObjectContext.executeFetchRequest(fetchRequest)
+            vagter = fetchedVagter as! [Vagt]
+        } catch {
+            fatalError("Error: \(error)")
+        }
+    }
+    
+    private func calculateTotalLon() {
+        for vagt in vagter {
+            let løn = vagt.samletLon
+            totalLon += løn
         }
     }
  

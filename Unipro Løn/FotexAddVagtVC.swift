@@ -24,24 +24,22 @@ class FotexAddVagtVC: UITableViewController {
             if let vagt = vagtToEdit {
                 startTime = vagt.startTime
                 endTime = vagt.endTime
-                print("Hej")
+                print(vagt.samletLon)
             }
         }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
         if let _ = vagtToEdit {
             title = "Ændre Vagt"
         }
         
         startTimePicker.date = startTime
         endTimePicker.date = endTime
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,9 +54,15 @@ class FotexAddVagtVC: UITableViewController {
     @IBAction func done(sender: UIBarButtonItem) {
         
         let vagt: Vagt
-        vagt = NSEntityDescription.insertNewObjectForEntityForName("Vagt", inManagedObjectContext: managedObjectContext) as! Vagt
-        vagt.startTime = NSDate(timeIntervalSince1970: 1)
-        vagt.endTime = NSDate()
+        
+        if let temp = vagtToEdit {
+            vagt = temp
+        } else {
+            vagt = NSEntityDescription.insertNewObjectForEntityForName("Vagt", inManagedObjectContext: managedObjectContext) as! Vagt
+        }
+        
+        vagt.startTime = startTimePicker.date
+        vagt.endTime = endTimePicker.date
         
         do {
             try managedObjectContext.save()
