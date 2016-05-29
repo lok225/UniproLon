@@ -49,7 +49,7 @@ class Vagt: NSManagedObject {
             monthComponent += 1
         }
         
-        return 1
+        return monthComponent
     }
 
 }
@@ -66,3 +66,48 @@ extension NSDate {
     }
     
 }
+
+extension Int {
+    
+    func getMonthAsString() -> String {
+        
+        let monthString: String!
+        
+        switch self {
+        case 1:
+            monthString = "Januar"
+        case 2:
+            monthString = "Februar"
+        case 3:
+            monthString = "Marts"
+        case 4:
+            monthString = "April"
+        case 5:
+            monthString = "Maj"
+        case 6:
+            monthString = "Juni"
+        case 7:
+            monthString = "Juli"
+        case 8:
+            monthString = "August"
+        case 9:
+            monthString = "September"
+        case 10:
+            monthString = "Oktober"
+        case 11:
+            monthString = "November"
+        case 12:
+            monthString = "December"
+        default:
+            monthString = ""
+        }
+        
+        return monthString
+    }
+    
+}
+
+
+
+
+
