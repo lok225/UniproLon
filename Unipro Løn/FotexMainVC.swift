@@ -17,7 +17,6 @@ class FotexMainVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
     @IBOutlet weak var lblFøtexTillæg: UILabel!
     @IBOutlet weak var lblFøtexTimer: UILabel!
     @IBOutlet weak var lblFøtexVagter: UILabel!
-    @IBOutlet weak var lblFøtexAM: UILabel!
     
     @IBOutlet weak var vagtTableView: UITableView!
     
@@ -31,40 +30,38 @@ class FotexMainVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
         let entity = NSEntityDescription.entityForName("Vagt", inManagedObjectContext: self.managedObjectContext)
         fetchRequest.entity = entity
         
-        // let sortDescriptor1 = NSSortDescriptor(key: "month", ascending: true)
-        let sortDescriptor2 = NSSortDescriptor(key: "startTime", ascending: true)
-        fetchRequest.sortDescriptors = [sortDescriptor2]
+        let sortDescriptor1 = NSSortDescriptor(key: "month", ascending: true)
+        let sortDescriptor2 = NSSortDescriptor(key: "startTime", ascending: false)
+        fetchRequest.sortDescriptors = [sortDescriptor1, sortDescriptor2]
         
         fetchRequest.fetchBatchSize = 20
         
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: nil, cacheName: "Vagter")
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: "month", cacheName: "Vagter")
         
         fetchedResultsController.delegate = self
         
         return fetchedResultsController
     }()
     
-    var vagter = [Vagt]()
-    
-//    var måneder: [[Vagt]] {
-//        
-//        return [[Vagt()]]
-//    }
+    let defaults = NSUserDefaults.standardUserDefaults()
+    let kFotexFirstTime = "kFotexFirstTime"
     
     var totalLon: Double = 0.0 {
         didSet {
             lblFøtexTotalLøn.text = String(Int(totalLon)) + ",-"
-            lblFøtexAM.text = "Efter AM: " + String(totalAM) + ",-"
+            self.antalVagter = vagterFetchedResultsController.sections![0].numberOfObjects
+            calculateTotalTillæg()
+            calculateAntalTimer()
         }
     }
-    var tillæg: Double = 0.0 {
+    var totalTillæg: Double = 0.0 {
         didSet {
-            lblFøtexTillæg.text = "Deraf tillæg: " + String(tillæg) + ",-"
+            lblFøtexTillæg.text = "Deraf tillæg: " + String(Int(totalTillæg)) + ",-"
         }
     }
     var antalTimer: Double = 0.0 {
         didSet {
-            lblFøtexTimer.text = "Antal timer: " + String(antalTimer)
+            lblFøtexTimer.text = "Antal timer: " + getAntalTimerAsString()
         }
     }
     var antalVagter: Int = 0 {
@@ -72,26 +69,30 @@ class FotexMainVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
             lblFøtexVagter.text = "Antal vagter: " + String(antalVagter)
         }
     }
-    var totalAM: Double {
-        return totalLon * 0.92
-    }
+    
+    // MARK: - Initial Functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        performFetch()
-
-//        let vagt = NSEntityDescription.insertNewObjectForEntityForName("Vagt", inManagedObjectContext: managedObjectContext) as! Vagt
-//        vagt.startTime = NSDate()
-//        vagt.endTime = NSDate(timeIntervalSinceNow: 10)
-//        
-//        do {
-//            try managedObjectContext.save()
-//        } catch {
-//            fatalError("Error: \(error)")
-//        }
+        // Den crasher hvis den er tom?
+        if defaults.boolForKey(kFotexFirstTime) == false {
+            let vagt = NSEntityDescription.insertNewObjectForEntityForName("Vagt", inManagedObjectContext: managedObjectContext) as! Vagt
+            vagt.startTime = NSDate()
+            vagt.endTime = NSDate(timeInterval: 1, sinceDate: vagt.startTime)
+            vagt.month = vagt.getLonMonth()
+            
+            do {
+                try managedObjectContext.save()
+            } catch {
+                fatalError("Error: \(error)")
+            }
+            
+            defaults.setBool(true, forKey: kFotexFirstTime)
+            defaults.synchronize()
+        }
         
-        // setupCoreData()
+        performFetch()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -99,6 +100,8 @@ class FotexMainVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
         
         calculateTotalLon()
     }
+    
+    
     
     // MARK: - UITableViewDelegate
     
@@ -118,13 +121,11 @@ class FotexMainVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
-//        let vagt = vagter[0]
-//        let component = NSCalendar.currentCalendar().components([.Month, .Year], fromDate: vagt.startTime)
-//        let formatter = NSDateComponentsFormatter()
-//        formatter.unitsStyle = .Full
-//        let string = formatter.stringFromDateComponents(component)
+        let sectionInfo = vagterFetchedResultsController.sections![section]
+        let tempVagter = vagterFetchedResultsController.sections![section].objects as! [Vagt]
+        let vagt = tempVagter[0]
         
-        return "Hej"
+        return sectionInfo.name + ", " + vagt.getLonYear()
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -135,15 +136,20 @@ class FotexMainVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = UITableViewCell()
+        let cell = UITableViewCell(style: .Value1, reuseIdentifier: nil)
         
+        configureCell(cell, atIndexPath: indexPath)
+        
+        return cell
+    }
+    
+    func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
         let vagt = vagterFetchedResultsController.objectAtIndexPath(indexPath) as! Vagt
         
         let startTimeFormatter = NSDateFormatter()
-        startTimeFormatter.timeStyle = .ShortStyle
-        startTimeFormatter.dateStyle = .FullStyle
+        startTimeFormatter.dateFormat = "EEEE d/M H:mm"
         let startDate = vagt.startTime!
-        let startTimeString = startTimeFormatter.stringFromDate(startDate)
+        let startTimeString = startTimeFormatter.stringFromDate(startDate).capitalizedString
         
         let endTimeFormatter = NSDateFormatter()
         endTimeFormatter.timeStyle = .ShortStyle
@@ -152,15 +158,31 @@ class FotexMainVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
         let endTimeString = endTimeFormatter.stringFromDate(endDate)
         
         cell.textLabel?.text = startTimeString + " - " + endTimeString
+        cell.detailTextLabel?.text = String(Int(vagt.samletLon)) + ",-"
         
-        return cell
+        if NSDate().differenceInMinsWithDate(startDate) > 0 {
+            let color = UIColor(red: 0.86, green: 0.86, blue: 0.86, alpha: 1.0)
+            cell.backgroundColor = color
+        }
     }
     
     // Override to support conditional editing of the table view.
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
+        
+        if vagterFetchedResultsController.fetchedObjects!.count == 1 {
+            let alert = createAlertWithTitle("Kan ikke slettes", message: "Kan ikke slettes, da det er den sidste")
+            self.presentViewController(alert, animated: true, completion: nil)
             tableView.editing = false
+        } else if editingStyle == .Delete {
+            let location = vagterFetchedResultsController.objectAtIndexPath(indexPath) as! Vagt
+            managedObjectContext.deleteObject(location)
+            
+            do {
+                try managedObjectContext.save()
+            } catch {
+                fatalError(String(error))
+            }
         }
     }
     
@@ -190,30 +212,35 @@ class FotexMainVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
         }
     }
     
-    private func setupCoreData() {
-        
-        let fetchRequest = NSFetchRequest()
-        let entity = NSEntityDescription.entityForName("Vagt", inManagedObjectContext: managedObjectContext)
-        fetchRequest.entity = entity
-        
-        let sortDescriptor = NSSortDescriptor(key: "endTime", ascending: false)
-        fetchRequest.sortDescriptors = [sortDescriptor]
-        
-        do {
-            let fetchedVagter = try managedObjectContext.executeFetchRequest(fetchRequest)
-            vagter = fetchedVagter as! [Vagt]
-        } catch {
-            fatalError("Error: \(error)")
-        }
-    }
-    
     private func calculateTotalLon() {
-        for vagt in vagter {
+        totalLon = 0
+        for vagt in (vagterFetchedResultsController.sections![0].objects as! [Vagt]) {
             let løn = vagt.samletLon
             totalLon += løn
         }
     }
 
+    private func calculateAntalTimer() {
+        antalTimer = 0.0
+        for vagt in (vagterFetchedResultsController.fetchedObjects as! [Vagt]) {
+            let hours = vagt.vagtITimer
+            antalTimer += hours
+        }
+    }
+    
+    private func getAntalTimerAsString() -> String {
+        let minutes = antalTimer * 60
+        
+        return getFormattedTimeWorkedAsText(false, time: Int(minutes))!
+    }
+    
+    private func calculateTotalTillæg() {
+        totalTillæg = 0.0
+        for vagt in (vagterFetchedResultsController.fetchedObjects as! [Vagt]) {
+            let satser = vagt.totalSatser
+            totalTillæg += satser
+        }
+    }
 }
 
 extension FotexMainVC: NSFetchedResultsControllerDelegate {
@@ -223,19 +250,20 @@ extension FotexMainVC: NSFetchedResultsControllerDelegate {
     }
     
     func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+        
         switch type {
         case .Insert:
             print("*** NSFetchedResultsChangeInsert (object)")
             vagtTableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
+            calculateTotalLon()
         case .Delete:
             print("*** NSFetchedResultsChangeDelete (object)")
             vagtTableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
+            calculateTotalLon()
         case .Update:
             print("*** NSFetchedResultsChangeUpdate (object)")
-//            if let cell = vagtTableView.cellForRowAtIndexPath(indexPath!) {
-//                let location = controller.objectAtIndexPath(indexPath!) as! Vagt
-//                cell.configureForLocation(location)
-//            }
+            configureCell(vagtTableView.cellForRowAtIndexPath(indexPath!)!, atIndexPath: indexPath!)
+            calculateTotalLon()
         case .Move:
             print("*** NSFetchedResultsChangeMove (object)")
             vagtTableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
@@ -244,6 +272,7 @@ extension FotexMainVC: NSFetchedResultsControllerDelegate {
     }
     
     func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
+        
         switch type {
         case .Insert:
             print("*** NSFetchedResultsChangeInsert (section)")

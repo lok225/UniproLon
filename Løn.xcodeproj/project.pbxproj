@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E303B0581C4CF0F800D96ADC /* ExtraFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E303B0571C4CF0F800D96ADC /* ExtraFunctions.swift */; };
+		E30D26CF1CFB43A300324070 /* Vagt+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30D26CE1CFB43A300324070 /* Vagt+CoreDataProperties.swift */; };
 		E3598B6C1C46496A006754C0 /* UniproHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3598B6B1C46496A006754C0 /* UniproHistoryVC.swift */; };
 		E35F5D701CD41BE500768311 /* FotexMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35F5D6F1CD41BE500768311 /* FotexMainVC.swift */; };
 		E3D45A471C07019D00CD26F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D45A461C07019D00CD26F3 /* AppDelegate.swift */; };
@@ -16,7 +17,6 @@
 		E3D45A4E1C07019D00CD26F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3D45A4D1C07019D00CD26F3 /* Assets.xcassets */; };
 		E3D45A511C07019D00CD26F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3D45A4F1C07019D00CD26F3 /* LaunchScreen.storyboard */; };
 		E3D61F341C0DB71A0022550B /* MonthItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D61F331C0DB71A0022550B /* MonthItem.swift */; };
-		E3D7F3471CE4610900B691D9 /* Vagt+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D7F3451CE4610900B691D9 /* Vagt+CoreDataProperties.swift */; };
 		E3D7F3481CE4610900B691D9 /* Vagt.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D7F3461CE4610900B691D9 /* Vagt.swift */; };
 		E3FE60061C3AA1DA00E3C737 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FE60051C3AA1DA00E3C737 /* DataModel.swift */; };
 		E3FEE5361CE37B7F00ED0CF2 /* FotexAddVagtVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FEE5351CE37B7F00ED0CF2 /* FotexAddVagtVC.swift */; };
@@ -38,6 +38,7 @@
 
 /* Begin PBXFileReference section */
 		E303B0571C4CF0F800D96ADC /* ExtraFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtraFunctions.swift; sourceTree = "<group>"; };
+		E30D26CE1CFB43A300324070 /* Vagt+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Vagt+CoreDataProperties.swift"; path = "../Vagt+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E3598B6B1C46496A006754C0 /* UniproHistoryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UniproHistoryVC.swift; sourceTree = "<group>"; };
 		E35F5D6F1CD41BE500768311 /* FotexMainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FotexMainVC.swift; sourceTree = "<group>"; };
 		E3D45A431C07019D00CD26F3 /* Unipro Løn.temp_caseinsensitive_rename.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Unipro Løn.temp_caseinsensitive_rename.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -48,7 +49,6 @@
 		E3D45A501C07019D00CD26F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E3D45A521C07019D00CD26F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E3D61F331C0DB71A0022550B /* MonthItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthItem.swift; sourceTree = "<group>"; };
-		E3D7F3451CE4610900B691D9 /* Vagt+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Vagt+CoreDataProperties.swift"; path = "../Vagt+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E3D7F3461CE4610900B691D9 /* Vagt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Vagt.swift; path = ../Vagt.swift; sourceTree = "<group>"; };
 		E3FE60051C3AA1DA00E3C737 /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		E3FEE5351CE37B7F00ED0CF2 /* FotexAddVagtVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FotexAddVagtVC.swift; sourceTree = "<group>"; };
@@ -87,7 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				E3FEE5371CE37FE600ED0CF2 /* CoreDataModel.xcdatamodeld */,
-				E3D7F3451CE4610900B691D9 /* Vagt+CoreDataProperties.swift */,
+				E30D26CE1CFB43A300324070 /* Vagt+CoreDataProperties.swift */,
 				E3D7F3461CE4610900B691D9 /* Vagt.swift */,
 			);
 			name = "Core Data";
@@ -113,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				E3D45A461C07019D00CD26F3 /* AppDelegate.swift */,
+				E303B0571C4CF0F800D96ADC /* ExtraFunctions.swift */,
 				E3DFB63C1CD162BA00E21170 /* Unipro */,
 				E35F5D711CD41CB700768311 /* Føtex */,
 				E3D45A4A1C07019D00CD26F3 /* Main.storyboard */,
@@ -130,7 +131,6 @@
 				E3598B6B1C46496A006754C0 /* UniproHistoryVC.swift */,
 				E3D61F331C0DB71A0022550B /* MonthItem.swift */,
 				E3FE60051C3AA1DA00E3C737 /* DataModel.swift */,
-				E303B0571C4CF0F800D96ADC /* ExtraFunctions.swift */,
 			);
 			name = Unipro;
 			sourceTree = "<group>";
@@ -218,10 +218,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E30D26CF1CFB43A300324070 /* Vagt+CoreDataProperties.swift in Sources */,
 				E3D61F341C0DB71A0022550B /* MonthItem.swift in Sources */,
 				E3FEE5361CE37B7F00ED0CF2 /* FotexAddVagtVC.swift in Sources */,
 				E35F5D701CD41BE500768311 /* FotexMainVC.swift in Sources */,
-				E3D7F3471CE4610900B691D9 /* Vagt+CoreDataProperties.swift in Sources */,
 				E3FE60061C3AA1DA00E3C737 /* DataModel.swift in Sources */,
 				E3598B6C1C46496A006754C0 /* UniproHistoryVC.swift in Sources */,
 				E3FEE5391CE37FE600ED0CF2 /* CoreDataModel.xcdatamodeld in Sources */,

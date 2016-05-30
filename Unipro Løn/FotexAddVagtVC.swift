@@ -41,11 +41,6 @@ class FotexAddVagtVC: UITableViewController {
         startTimePicker.date = startTime
         endTimePicker.date = endTime
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     @IBAction func cancel(sender: UIBarButtonItem) {
         self.dismissViewControllerAnimated(true, completion: nil)
@@ -63,6 +58,7 @@ class FotexAddVagtVC: UITableViewController {
         
         vagt.startTime = startTimePicker.date
         vagt.endTime = endTimePicker.date
+        vagt.month = vagt.getLonMonth()
         
         do {
             try managedObjectContext.save()
@@ -72,5 +68,11 @@ class FotexAddVagtVC: UITableViewController {
         
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    @IBAction func startTimePickerChanged(sender: UIDatePicker) {
+        
+        endTimePicker.date = NSDate(timeInterval: 10800, sinceDate: startTimePicker.date)
+    }
+    
 
 }

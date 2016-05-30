@@ -31,3 +31,26 @@ func createAlertWithTitle(title: String, message: String) -> UIAlertController {
     
     return alert
 }
+
+func getFormattedTimeWorkedAsText(asText: Bool, time timeWorked: Int) -> String? {
+    
+    let hoursWorked = timeWorked / 60
+    let minutesWorked = timeWorked % 60
+    
+    if asText {
+        if hoursWorked == 0 && minutesWorked == 0 {
+            return nil
+        } else if hoursWorked == 0 {
+            return "\(minutesWorked) minutter"
+        } else if hoursWorked != 0 && minutesWorked == 0 {
+            return "\(hoursWorked) timer"
+        } else if hoursWorked == 1 && minutesWorked == 0 {
+            return "\(hoursWorked) time"
+        } else {
+            return "\(hoursWorked) timer og \(minutesWorked) minutter"
+        }
+    } else {
+        let totalTime = String(format: "%01d:%02d", hoursWorked, minutesWorked)
+        return totalTime
+    }
+}

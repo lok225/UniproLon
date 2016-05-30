@@ -1,8 +1,8 @@
 //
 //  Vagt+CoreDataProperties.swift
-//  Unipro Løn
+//  Løn
 //
-//  Created by Martin Lok on 12/05/2016.
+//  Created by Martin Lok on 29/05/2016.
 //  Copyright © 2016 Martin Lok. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -15,7 +15,8 @@ import CoreData
 extension Vagt {
 
     @NSManaged var endTime: NSDate!
+    @NSManaged var penge: NSNumber
     @NSManaged var startTime: NSDate!
-    @NSManaged var penge: Float
-    
+    @NSManaged var month: String!
+
 }

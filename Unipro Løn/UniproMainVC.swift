@@ -52,7 +52,9 @@ class UniproMainVC: UIViewController, MFMailComposeViewControllerDelegate {
     }
     
     func updateTimeWorkedLabel() {
-        lblTimeWorked.text = dataModel.monthItems.first!.getFormattedTimeWorkedAsText(false)
+        let timeWorked = dataModel.monthItems.first!.timeWorked
+        let timeString = getFormattedTimeWorkedAsText(false, time: timeWorked)
+        lblTimeWorked.text = timeString
     }
     
     // MARK: - @IBActions

@@ -520,11 +520,11 @@
             </objects>
             <point key="canvasLocation" x="3924" y="387"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Føtex-->
         <scene sceneID="hEI-xy-MOF">
             <objects>
                 <navigationController id="yPH-uY-uqe" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" badgeValue="Føtex" systemItem="recents" id="Zgk-hf-Dzf"/>
+                    <tabBarItem key="tabBarItem" title="Føtex" image="Fotex" id="Zgk-hf-Dzf"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="wQy-W9-RWM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -559,7 +559,7 @@
         <!--Føtex Løn-->
         <scene sceneID="rVG-L7-whq">
             <objects>
-                <viewController id="uel-IE-7T4" customClass="FotexMainVC" customModule="Unipro_Løn_temp_caseinsensitive_rename" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="uel-IE-7T4" customClass="FotexMainVC" customModule="Unipro_Løn_temp_caseinsensitive_rename" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Rdp-D9-S9Q"/>
                         <viewControllerLayoutGuide type="bottom" id="N6F-bU-Lb8"/>
@@ -572,26 +572,9 @@
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Vov-JF-pOL">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="vagtCell" id="Qp5-2z-PGN">
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vov-JF-pOL" id="vTe-ck-J8K">
-                                            <rect key="frame" x="0.0" y="0.0" width="240" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="FRz-b6-QbD">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FRz-b6-QbD" id="7u4-gN-wtE">
-                                            <rect key="frame" x="0.0" y="0.0" width="240" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="4iK-n2-HUO">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4iK-n2-HUO" id="ZW4-Lv-tlS">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Qp5-2z-PGN" id="Dmv-KI-0Yh">
                                             <rect key="frame" x="0.0" y="0.0" width="240" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
@@ -603,46 +586,40 @@
                                 </connections>
                             </tableView>
                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="BuV-ua-TMX">
-                                <rect key="frame" x="0.0" y="52" width="717" height="33"/>
+                                <rect key="frame" x="0.0" y="52" width="649" height="33"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Løn denne måned:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="biV-la-hcQ">
-                                        <rect key="frame" x="0.0" y="0.0" width="142" height="33"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="1490,-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9um-L6-x8b">
-                                        <rect key="frame" x="142" y="0.0" width="79" height="33"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="219" height="33"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Deraf tillæg: 200,-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x5B-ib-A1Z">
-                                        <rect key="frame" x="221" y="0.0" width="141" height="33"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="1490,-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9um-L6-x8b">
+                                        <rect key="frame" x="219" y="0.0" width="79" height="33"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Deraf tillæg: 0,-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x5B-ib-A1Z">
+                                        <rect key="frame" x="298" y="0.0" width="120" height="33"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Antal timer: 22" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aRd-AO-7zB">
-                                        <rect key="frame" x="362" y="0.0" width="112" height="33"/>
+                                        <rect key="frame" x="418" y="0.0" width="112" height="33"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Antal vagter: 12" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7R3-zf-rSI">
-                                        <rect key="frame" x="474" y="0.0" width="119" height="33"/>
+                                        <rect key="frame" x="530" y="0.0" width="119" height="33"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                         <variation key="heightClass=regular-widthClass=compact">
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                         </variation>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Efter AM: 1370,-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="25q-b9-BAj">
-                                        <rect key="frame" x="593" y="0.0" width="125" height="33"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <constraints>
@@ -665,7 +642,9 @@
                             <constraint firstItem="BuV-ua-TMX" firstAttribute="top" secondItem="Rdp-D9-S9Q" secondAttribute="bottom" constant="8" id="cJR-hc-SOZ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="BuV-ua-TMX" secondAttribute="trailing" id="es8-q8-kgp"/>
                             <constraint firstItem="qjA-E0-NiL" firstAttribute="top" secondItem="BuV-ua-TMX" secondAttribute="bottom" constant="8" id="j0S-d6-hEH"/>
-                            <constraint firstItem="qjA-E0-NiL" firstAttribute="bottom" secondItem="4zw-xv-DBl" secondAttribute="bottomMargin" id="oxy-ub-2TV"/>
+                            <constraint firstItem="qjA-E0-NiL" firstAttribute="bottom" secondItem="4zw-xv-DBl" secondAttribute="bottomMargin" id="oxy-ub-2TV">
+                                <variation key="heightClass=regular-widthClass=compact" constant="-49"/>
+                            </constraint>
                             <constraint firstItem="qjA-E0-NiL" firstAttribute="leading" secondItem="4zw-xv-DBl" secondAttribute="leadingMargin" constant="-20" id="scI-eq-4h7"/>
                             <constraint firstAttribute="trailingMargin" secondItem="qjA-E0-NiL" secondAttribute="trailing" constant="-20" id="tKr-nM-7y1"/>
                             <constraint firstItem="BuV-ua-TMX" firstAttribute="leading" secondItem="4zw-xv-DBl" secondAttribute="leadingMargin" id="xGe-j9-Tpv"/>
@@ -707,7 +686,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="lblFøtexAM" destination="25q-b9-BAj" id="vJ5-jv-qNx"/>
                         <outlet property="lblFøtexTillæg" destination="x5B-ib-A1Z" id="7vS-at-jpn"/>
                         <outlet property="lblFøtexTimer" destination="aRd-AO-7zB" id="BS6-qw-Q97"/>
                         <outlet property="lblFøtexTotalLøn" destination="9um-L6-x8b" id="4Ba-CM-JAF"/>
@@ -760,11 +738,11 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="124" id="IZH-Ru-DlG">
-                                        <rect key="frame" x="0.0" y="157.5" width="600" height="124"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="176" id="IZH-Ru-DlG">
+                                        <rect key="frame" x="0.0" y="157.5" width="600" height="176"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IZH-Ru-DlG" id="YkV-OL-qr5">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="123.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="175.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="15" translatesAutoresizingMaskIntoConstraints="NO" id="FrM-04-oc1">
@@ -772,6 +750,9 @@
                                                     <date key="date" timeIntervalSinceReferenceDate="483662038.30551702">
                                                         <!--2016-04-29 22:33:58 +0000-->
                                                     </date>
+                                                    <connections>
+                                                        <action selector="startTimePickerChanged:" destination="OpU-hA-ywT" eventType="valueChanged" id="zwT-gN-ZS1"/>
+                                                    </connections>
                                                 </datePicker>
                                             </subviews>
                                             <constraints>
@@ -809,7 +790,7 @@
                             <tableViewSection headerTitle="Slut tid" id="pLz-hH-XbK">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="4jm-Rs-8bN" detailTextLabel="KzY-KL-8I1" style="IBUITableViewCellStyleValue1" id="e67-2B-28W">
-                                        <rect key="frame" x="0.0" y="331.5" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="383.5" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="e67-2B-28W" id="HPi-hI-crz">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -838,11 +819,11 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="124" id="Bgb-25-Yrh">
-                                        <rect key="frame" x="0.0" y="375.5" width="600" height="124"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="176" id="Bgb-25-Yrh">
+                                        <rect key="frame" x="0.0" y="427.5" width="600" height="176"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Bgb-25-Yrh" id="GH8-Wt-V9f">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="123.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="175.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="15" translatesAutoresizingMaskIntoConstraints="NO" id="NyR-IO-AJM">
@@ -911,11 +892,11 @@
             </objects>
             <point key="canvasLocation" x="4842" y="1050.75"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Unipro-->
         <scene sceneID="k6y-LS-hXe">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qyQ-md-eui" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" badgeValue="Unipro" systemItem="favorites" id="q4C-Jf-RKG"/>
+                    <tabBarItem key="tabBarItem" title="Unipro" image="Unipro Tab Icon" id="q4C-Jf-RKG"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="qzQ-Jm-0YF">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -967,11 +948,11 @@
             </objects>
             <point key="canvasLocation" x="3924" y="1050.75"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Græs-->
         <scene sceneID="Nmx-Cg-kS7">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1e0-Rg-eq7" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" badgeValue="Græs" systemItem="search" id="r9f-ve-9dH"/>
+                    <tabBarItem key="tabBarItem" title="Græs" image="Gras" id="r9f-ve-9dH"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="XRI-Rz-4qH">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -987,5 +968,10 @@
             <point key="canvasLocation" x="2244" y="1721.25"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Fotex" width="22" height="18"/>
+        <image name="Gras" width="22" height="16"/>
+        <image name="Unipro Tab Icon" width="16" height="20"/>
+    </resources>
     <color key="tintColor" red="0.015686274510000001" green="0.66274509800000003" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
 </document>

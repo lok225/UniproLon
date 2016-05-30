@@ -9,18 +9,28 @@
 import Foundation
 import CoreData
 
-
 class Vagt: NSManagedObject {
     
     private let calendar: NSCalendar = NSCalendar.currentCalendar()
     
     private let basisLon: Double = 63.86
-    private let aftenSats: Double = 12.4
-    private let lordagsSats: Double = 22.0
-    private let sondagsSats: Double = 24.9
+    private let aftenSats: Double = 12.6
+    private let lordagsSats: Double = 22.38
+    private let sondagsSats: Double = 25.3
+    
+    var totalSatser: Double = 0.0
+    
+    // TODO: Lav et interval for hver 60. minut, hvor jeg laver et array med timer. Derefter kan jeg tilføje penge, under satserne. 
     
     var vagtITimer: Double {
-        return Double(startTime.differenceInMinsWithDate(endTime)) / 60
+        
+        var min = startTime.differenceInMinsWithDate(endTime)
+        
+        if min >= 240 {
+            min -= 30
+        }
+        
+        return Double(min) / 60
     }
     
     var samletLon: Double {
@@ -28,18 +38,24 @@ class Vagt: NSManagedObject {
         let weekDayComponent = calendar.component(.Weekday, fromDate: startTime)
         let hourOfDay = calendar.component(.Hour, fromDate: startTime)
         
+        var lon = 0.0
+        
         if weekDayComponent == 1 {
-            return vagtITimer * (basisLon + sondagsSats)
+            totalSatser += sondagsSats * vagtITimer
+            lon = vagtITimer * (basisLon + sondagsSats)
         } else if weekDayComponent == 7 && hourOfDay >= 15 {
-            return vagtITimer * (basisLon + lordagsSats)
+            lon = vagtITimer * (basisLon + lordagsSats)
         } else if hourOfDay >= 18 {
-            return vagtITimer * (basisLon + aftenSats)
+            totalSatser += aftenSats * vagtITimer
+            lon = vagtITimer * (basisLon + aftenSats)
+        } else {
+            lon = vagtITimer * basisLon
         }
         
-        return vagtITimer * basisLon
+        return lon
     }
     
-    func getLonMonth() -> Int {
+    func getLonMonth() -> String {
     
         let calendar = NSCalendar.currentCalendar()
         let dayComponent = calendar.component(.Day, fromDate: startTime)
@@ -49,7 +65,17 @@ class Vagt: NSManagedObject {
             monthComponent += 1
         }
         
-        return monthComponent
+        let monthString = monthComponent.getMonthAsString()
+        
+        return monthString
+    }
+    
+    func getLonYear() -> String {
+        
+        let calendar = NSCalendar.currentCalendar()
+        let yearComponent = calendar.component([.Year], fromDate: startTime)
+        
+        return String(yearComponent)
     }
 
 }
@@ -61,7 +87,6 @@ extension NSDate {
         
         let components = calendar.components(.Minute, fromDate: self, toDate: date, options: [])
         
-        print(components.minute)
         return components.minute
     }
     
