@@ -18,9 +18,12 @@ class Vagt: NSManagedObject {
     private let lordagsSats: Double = 22.38
     private let sondagsSats: Double = 25.3
     
-    var totalSatser: Double = 0.0
+    private let lordagSatsTime: Double = 15 * 60
+    private let hverdagSatsTime: Double = 18 * 60
     
-    // TODO: Lav et interval for hver 60. minut, hvor jeg laver et array med timer. Derefter kan jeg tilføje penge, under satserne. 
+    var satser: Double = 0.0
+    
+    // TODO: Lav et interval for hver 60. minut, hvor jeg laver et array med timer. Derefter kan jeg tilføje penge, under satserne.
     
     var vagtITimer: Double {
         
@@ -33,24 +36,70 @@ class Vagt: NSManagedObject {
         return Double(min) / 60
     }
     
+    var vagtIMin: Int {
+        
+        let min = startTime.differenceInMinsWithDate(endTime)
+        
+        return min
+    }
+    
     var samletLon: Double {
         
         let weekDayComponent = calendar.component(.Weekday, fromDate: startTime)
-        let hourOfDay = calendar.component(.Hour, fromDate: startTime)
+        
+        let startHour = calendar.component(.Hour, fromDate: startTime)
+        let startMinute = calendar.component(.Minute, fromDate: startTime)
+        let startTimeOfDay = Double((startHour * 60) + startMinute)
+        
+        let endHour = calendar.component(.Hour, fromDate: endTime)
+        let endMinute = calendar.component(.Minute, fromDate: endTime)
+        var endTimeOfDay = Double((endHour * 60) + endMinute)
+        
+        let tillægDage: [Double] = [sondagsSats, aftenSats, aftenSats, aftenSats, aftenSats, aftenSats, lordagsSats]
+        
+        if vagtIMin >= 240 {
+            endTimeOfDay -= 30
+        }
+        
+        let tempVagtIMin: Int = Int(endTimeOfDay - startTimeOfDay)
         
         var lon = 0.0
+        let grundLon = basisLon * vagtITimer
+        var satsTime = 0
+        
+        // TODO: Ændre algoritme så starttiden tæller ind
+        
+        switch weekDayComponent {
+        case 2,3,4,5,6:
+            print("Hverdag")
+            if endTimeOfDay > hverdagSatsTime {
+                satsTime = Int(endTimeOfDay - hverdagSatsTime)
+            }
+        case 7:
+            print("Lordag")
+            if endTimeOfDay > lordagSatsTime {
+                satsTime = Int(endTimeOfDay - lordagSatsTime)
+
+            }
+        default:
+            break
+        }
         
         if weekDayComponent == 1 {
-            totalSatser += sondagsSats * vagtITimer
-            lon = vagtITimer * (basisLon + sondagsSats)
-        } else if weekDayComponent == 7 && hourOfDay >= 15 {
-            lon = vagtITimer * (basisLon + lordagsSats)
-        } else if hourOfDay >= 18 {
-            totalSatser += aftenSats * vagtITimer
-            lon = vagtITimer * (basisLon + aftenSats)
+            satser = vagtITimer * sondagsSats
         } else {
-            lon = vagtITimer * basisLon
+            print("Satstid før: \(satsTime)")
+            if Int(satsTime) > tempVagtIMin {
+                Int(satsTime) - tempVagtIMin % Int(satsTime)
+                print("called")
+                print("Satstid \(satsTime)")
+            }
+            
+            satser = Double(satsTime / 60) * tillægDage[weekDayComponent - 1]
+            
         }
+        
+        lon = grundLon + satser
         
         return lon
     }

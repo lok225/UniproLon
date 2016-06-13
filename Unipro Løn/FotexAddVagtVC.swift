@@ -24,22 +24,23 @@ class FotexAddVagtVC: UITableViewController {
             if let vagt = vagtToEdit {
                 startTime = vagt.startTime
                 endTime = vagt.endTime
-                print(vagt.samletLon)
             }
         }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
     override func viewWillAppear(animated: Bool) {
         if let _ = vagtToEdit {
             title = "Ændre Vagt"
+            startTimePicker.date = startTime
+            endTimePicker.date = endTime
+        } else {
+            endTimePicker.date = NSDate(timeInterval: 10800, sinceDate: startTimePicker.date)
         }
-        
-        startTimePicker.date = startTime
-        endTimePicker.date = endTime
     }
     
     @IBAction func cancel(sender: UIBarButtonItem) {
@@ -70,7 +71,6 @@ class FotexAddVagtVC: UITableViewController {
     }
     
     @IBAction func startTimePickerChanged(sender: UIDatePicker) {
-        
         endTimePicker.date = NSDate(timeInterval: 10800, sinceDate: startTimePicker.date)
     }
     

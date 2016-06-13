@@ -61,9 +61,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, performActionForShortcutItem shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void) {
-        let navigationController = window!.rootViewController as! UINavigationController
-        let controller = navigationController.viewControllers[0] as! UniproMainVC
-        controller.sendSpecielMail()
+        
+        let tabBarController = window!.rootViewController as! UITabBarController
+        
+        switch shortcutItem.type {
+        case "com.martinlok.lon.sendMail":
+            let uniproNavigationController = tabBarController.viewControllers![0] as! UINavigationController
+            let uniproController = uniproNavigationController.viewControllers[0] as! UniproMainVC
+            uniproController.sendSpecielMail()
+        case "com.martinlok.lon.nyVagt":
+            let fotexNavigationController = tabBarController.viewControllers![1] as! UINavigationController
+            let fotexController = fotexNavigationController.topViewController as! FotexMainVC
+            
+            tabBarController.selectedIndex = 1
+            fotexController.performSegueWithIdentifier("AddVagt", sender: nil)
+        default:
+            print("Fuck")
+        }
+        
     }
 
     func applicationWillResignActive(application: UIApplication) {
