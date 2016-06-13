@@ -18,8 +18,8 @@ class Vagt: NSManagedObject {
     private let lordagsSats: Double = 22.38
     private let sondagsSats: Double = 25.3
     
-    private let lordagSatsTime: Double = 15 * 60
-    private let hverdagSatsTime: Double = 18 * 60
+    private let lordagSatsTime = 15 * 60
+    private let hverdagSatsTime = 18 * 60
     
     var satser: Double = 0.0
     
@@ -49,11 +49,11 @@ class Vagt: NSManagedObject {
         
         let startHour = calendar.component(.Hour, fromDate: startTime)
         let startMinute = calendar.component(.Minute, fromDate: startTime)
-        let startTimeOfDay = Double((startHour * 60) + startMinute)
+        let startTimeOfDay = (startHour * 60) + startMinute
         
         let endHour = calendar.component(.Hour, fromDate: endTime)
         let endMinute = calendar.component(.Minute, fromDate: endTime)
-        var endTimeOfDay = Double((endHour * 60) + endMinute)
+        var endTimeOfDay = (endHour * 60) + endMinute
         
         let tillægDage: [Double] = [sondagsSats, aftenSats, aftenSats, aftenSats, aftenSats, aftenSats, lordagsSats]
         
@@ -61,11 +61,11 @@ class Vagt: NSManagedObject {
             endTimeOfDay -= 30
         }
         
-        let tempVagtIMin: Int = Int(endTimeOfDay - startTimeOfDay)
+        let tempVagtIMin: Double = Double(endTimeOfDay - startTimeOfDay)
         
         var lon = 0.0
         let grundLon = basisLon * vagtITimer
-        var satsTime = 0
+        var satsTime = 0.0
         
         // TODO: Ændre algoritme så starttiden tæller ind
         
@@ -73,12 +73,12 @@ class Vagt: NSManagedObject {
         case 2,3,4,5,6:
             print("Hverdag")
             if endTimeOfDay > hverdagSatsTime {
-                satsTime = Int(endTimeOfDay - hverdagSatsTime)
+                satsTime = Double(endTimeOfDay - hverdagSatsTime)
             }
         case 7:
             print("Lordag")
             if endTimeOfDay > lordagSatsTime {
-                satsTime = Int(endTimeOfDay - lordagSatsTime)
+                satsTime = Double(endTimeOfDay - lordagSatsTime)
 
             }
         default:
@@ -89,11 +89,17 @@ class Vagt: NSManagedObject {
             satser = vagtITimer * sondagsSats
         } else {
             print("Satstid før: \(satsTime)")
-            if Int(satsTime) > tempVagtIMin {
-                Int(satsTime) - tempVagtIMin % Int(satsTime)
-                print("called")
-                print("Satstid \(satsTime)")
+            if satsTime > tempVagtIMin {
+//                Int(satsTime) - tempVagtIMin % Int(satsTime)
+                print("udregning: \(satsTime - tempVagtIMin)")
+                print("Anden udregning: \(satsTime - (satsTime - tempVagtIMin))")
+                satsTime = satsTime - (satsTime - tempVagtIMin)
+                print("Satstid efter: \(satsTime)")
             }
+            
+            print(tempVagtIMin)
+            print(Double(satsTime / 60))
+            print(satsTime / 60)
             
             satser = Double(satsTime / 60) * tillægDage[weekDayComponent - 1]
             
