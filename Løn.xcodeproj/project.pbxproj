@@ -178,12 +178,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0710;
-				LastUpgradeCheck = 0710;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Martin Lok";
 				TargetAttributes = {
 					E3D45A421C07019D00CD26F3 = {
 						CreatedOnToolsVersion = 7.1.1;
 						DevelopmentTeam = 2J6YE5GZ93;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -353,6 +354,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.martinlok.lon;
 				PRODUCT_NAME = "Unipro Løn.temp_caseinsensitive_rename";
+				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -367,6 +369,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.martinlok.lon;
 				PRODUCT_NAME = "Unipro Løn.temp_caseinsensitive_rename";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

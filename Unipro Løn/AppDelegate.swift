@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         NSUserDefaults.standardUserDefaults().setValue(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
 
+        print(NSUserDefaults.standardUserDefaults().boolForKey("kFotexFirstTime"))
         
         let tabBarController = window!.rootViewController as! UITabBarController
         

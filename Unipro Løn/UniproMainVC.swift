@@ -126,17 +126,17 @@ class UniproMainVC: UIViewController, MFMailComposeViewControllerDelegate {
     
     func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
         
-        switch result.rawValue {
-        case MFMailComposeResultCancelled.rawValue:
+        switch result {
+        case MFMailComposeResult.Cancelled:
             print("Cancelled")
             controller.dismissViewControllerAnimated(true, completion: { () -> Void in
                 let alert = createAlertWithTitle("Fejl", message: "Du har annuleret mailen")
                 self.presentViewController(alert, animated: true, completion: nil)
             })
-        case MFMailComposeResultFailed.rawValue:
+        case MFMailComposeResult.Failed:
             print("Failed")
             break
-        case MFMailComposeResultSent.rawValue:
+        case MFMailComposeResult.Sent:
             print("Sent")
             self.dataModel.monthItems.first!.endDate = NSDate()
             
