@@ -130,20 +130,6 @@ class FotexMainVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // 3D Touch - Peek & Pop
-//        registerForPreviewingWithDelegate(self, sourceView: vagtTableView)
-        
-        let vagt = NSEntityDescription.insertNewObjectForEntityForName("Vagt", inManagedObjectContext: managedObjectContext) as! Vagt
-        vagt.startTime = NSDate()
-        vagt.endTime = NSDate(timeInterval: 1, sinceDate: vagt.startTime)
-        vagt.month = vagt.getLonMonth()
-        
-        do {
-            try managedObjectContext.save()
-        } catch {
-            fatalError("Error: \(error)")
-        }
-        
         // checkFirstTime()
         performFetch()
         
@@ -169,7 +155,7 @@ class FotexMainVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
     }
     
     func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        let header: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView //recast your view as a UITableViewHeaderFooterView
+        let header: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView  // Recast your view as a UITableViewHeaderFooterView
         header.textLabel!.textColor = UIColor.whiteColor() //make the text white
         header.alpha = 0.8 //make the header transparent
     }
@@ -296,6 +282,19 @@ class FotexMainVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
     private func performFetch() {
         do {
             try vagterFetchedResultsController.performFetch()
+            
+            if vagterFetchedResultsController.fetchedObjects?.count == 0 {
+                let vagt = NSEntityDescription.insertNewObjectForEntityForName("Vagt", inManagedObjectContext: managedObjectContext) as! Vagt
+                vagt.startTime = NSDate()
+                vagt.endTime = NSDate(timeInterval: 60, sinceDate: vagt.startTime)
+                vagt.month = vagt.getLonMonth()
+                
+                do {
+                    try managedObjectContext.save()
+                } catch {
+                    fatalError("Error: \(error)")
+                }
+            }
         } catch {
             fatalError(String(error))
         }
@@ -303,21 +302,21 @@ class FotexMainVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
     
     private func checkFirstTime() {
         // Den crasher hvis den er tom?
-        if defaults.boolForKey(kFotexFirstTime) == false {
-            let vagt = NSEntityDescription.insertNewObjectForEntityForName("Vagt", inManagedObjectContext: managedObjectContext) as! Vagt
-            vagt.startTime = NSDate()
-            vagt.endTime = NSDate(timeInterval: 1, sinceDate: vagt.startTime)
-            vagt.month = vagt.getLonMonth()
-            
-            do {
-                try managedObjectContext.save()
-            } catch {
-                fatalError("Error: \(error)")
-            }
-            
-            defaults.setBool(true, forKey: kFotexFirstTime)
-            defaults.synchronize()
-        }
+//        if defaults.boolForKey(kFotexFirstTime) == false {
+//            let vagt = NSEntityDescription.insertNewObjectForEntityForName("Vagt", inManagedObjectContext: managedObjectContext) as! Vagt
+//            vagt.startTime = NSDate()
+//            vagt.endTime = NSDate(timeInterval: 1, sinceDate: vagt.startTime)
+//            vagt.month = vagt.getLonMonth()
+//            
+//            do {
+//                try managedObjectContext.save()
+//            } catch {
+//                fatalError("Error: \(error)")
+//            }
+//            
+//            defaults.setBool(true, forKey: kFotexFirstTime)
+//            defaults.synchronize()
+//        }
     }
     
     // MARK: - Vagt Functions
