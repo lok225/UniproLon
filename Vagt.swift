@@ -71,12 +71,12 @@ class Vagt: NSManagedObject {
         
         switch weekDayComponent {
         case 2,3,4,5,6:
-            print("Hverdag")
+//            print("Hverdag")
             if endTimeOfDay > hverdagSatsTime {
                 satsTime = Double(endTimeOfDay - hverdagSatsTime)
             }
         case 7:
-            print("Lordag")
+//            print("Lordag")
             if endTimeOfDay > lordagSatsTime {
                 satsTime = Double(endTimeOfDay - lordagSatsTime)
 
@@ -88,18 +88,18 @@ class Vagt: NSManagedObject {
         if weekDayComponent == 1 {
             satser = vagtITimer * sondagsSats
         } else {
-            print("Satstid før: \(satsTime)")
+//            print("Satstid før: \(satsTime)")
             if satsTime > tempVagtIMin {
 //                Int(satsTime) - tempVagtIMin % Int(satsTime)
-                print("udregning: \(satsTime - tempVagtIMin)")
-                print("Anden udregning: \(satsTime - (satsTime - tempVagtIMin))")
+//                print("udregning: \(satsTime - tempVagtIMin)")
+//                print("Anden udregning: \(satsTime - (satsTime - tempVagtIMin))")
                 satsTime = satsTime - (satsTime - tempVagtIMin)
-                print("Satstid efter: \(satsTime)")
+//                print("Satstid efter: \(satsTime)")
             }
             
-            print(tempVagtIMin)
-            print(Double(satsTime / 60))
-            print(satsTime / 60)
+//            print(tempVagtIMin)
+//            print(Double(satsTime / 60))
+//            print(satsTime / 60)
             
             satser = Double(satsTime / 60) * tillægDage[weekDayComponent - 1]
             

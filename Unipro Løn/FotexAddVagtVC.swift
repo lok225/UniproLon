@@ -34,10 +34,12 @@ class FotexAddVagtVC: UITableViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
         if let _ = vagtToEdit {
             title = "Ændre Vagt"
-            startTimePicker.date = startTime
-            endTimePicker.date = endTime
+//            startTimePicker.date = NSDate()
+//            startTimePicker.date = startTime
+//            endTimePicker.date = endTime
         } else {
             endTimePicker.date = NSDate(timeInterval: 10800, sinceDate: startTimePicker.date)
         }

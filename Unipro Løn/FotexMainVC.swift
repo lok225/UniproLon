@@ -11,6 +11,9 @@ import CoreData
 
 class FotexMainVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    // TODO: Fix DatePicker layout
+    // TODO: Tilføj 'Nu' knap
+    
     // MARK: - @IBOutlets
     
     @IBOutlet weak var lblFøtexTotalLøn: UILabel!
@@ -127,7 +130,21 @@ class FotexMainVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        checkFirstTime()
+        // 3D Touch - Peek & Pop
+//        registerForPreviewingWithDelegate(self, sourceView: vagtTableView)
+        
+        let vagt = NSEntityDescription.insertNewObjectForEntityForName("Vagt", inManagedObjectContext: managedObjectContext) as! Vagt
+        vagt.startTime = NSDate()
+        vagt.endTime = NSDate(timeInterval: 1, sinceDate: vagt.startTime)
+        vagt.month = vagt.getLonMonth()
+        
+        do {
+            try managedObjectContext.save()
+        } catch {
+            fatalError("Error: \(error)")
+        }
+        
+        // checkFirstTime()
         performFetch()
         
         setColors()
@@ -360,6 +377,29 @@ class FotexMainVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
         return getFormattedTimeWorkedAsText(false, time: Int(minutes))!
     }
 }
+
+//extension FotexMainVC: UIViewControllerPreviewingDelegate {
+//    
+//    func previewingContext(previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+//        
+//        guard let indexPath = vagtTableView.indexPathForRowAtPoint(location) else { return nil }
+//        
+//        let addVagtVC: FotexAddVagtVC = FotexAddVagtVC()
+//        addVagtVC.managedObjectContext = self.managedObjectContext
+//        guard let thisVagt = vagterFetchedResultsController.objectAtIndexPath(indexPath) as? Vagt else { return nil }
+//        addVagtVC.vagtToEdit = thisVagt
+//        
+//        let cellRect = vagtTableView.rectForRowAtIndexPath(indexPath)
+//        let sourceRect = previewingContext.sourceView.convertRect(cellRect, fromView: vagtTableView)
+//        previewingContext.sourceRect = sourceRect
+//        
+//        return addVagtVC
+//    }
+//    
+//    func previewingContext(previewingContext: UIViewControllerPreviewing, commitViewController viewControllerToCommit: UIViewController) {
+//        
+//    }
+//}
 
 extension FotexMainVC: NSFetchedResultsControllerDelegate {
     func controllerWillChangeContent(controller: NSFetchedResultsController) {
