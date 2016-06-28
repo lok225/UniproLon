@@ -104,11 +104,11 @@
                                                 </constraints>
                                                 <variation key="default">
                                                     <mask key="constraints">
+                                                        <exclude reference="4XN-IF-4mr"/>
+                                                        <exclude reference="5DX-nZ-d7i"/>
                                                         <exclude reference="TR5-5t-ZUc"/>
                                                         <exclude reference="t4b-on-Z7t"/>
                                                         <exclude reference="Yw4-rq-Hmj"/>
-                                                        <exclude reference="5DX-nZ-d7i"/>
-                                                        <exclude reference="4XN-IF-4mr"/>
                                                         <exclude reference="ZHx-sM-fXg"/>
                                                     </mask>
                                                 </variation>
@@ -117,11 +117,11 @@
                                                 </variation>
                                                 <variation key="heightClass=regular-widthClass=compact">
                                                     <mask key="constraints">
+                                                        <include reference="4XN-IF-4mr"/>
+                                                        <include reference="5DX-nZ-d7i"/>
                                                         <include reference="TR5-5t-ZUc"/>
                                                         <include reference="t4b-on-Z7t"/>
                                                         <include reference="Yw4-rq-Hmj"/>
-                                                        <include reference="5DX-nZ-d7i"/>
-                                                        <include reference="4XN-IF-4mr"/>
                                                         <include reference="ZHx-sM-fXg"/>
                                                     </mask>
                                                 </variation>
@@ -235,9 +235,6 @@
                                                                 </connections>
                                                             </button>
                                                         </subviews>
-                                                        <variation key="widthClass=compact" ambiguous="YES">
-                                                            <rect key="frame" x="0.0" y="145" width="343" height="61"/>
-                                                        </variation>
                                                     </stackView>
                                                 </subviews>
                                                 <constraints>
@@ -625,45 +622,15 @@
                         <sections>
                             <tableViewSection headerTitle="Start tid" id="maf-tK-51O">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="yVu-J3-OuG" detailTextLabel="kGR-ZC-Jvc" style="IBUITableViewCellStyleValue1" id="zKn-PD-t7L">
-                                        <rect key="frame" x="0.0" y="119.5" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zKn-PD-t7L" id="OW1-9N-kJ4">
-                                            <frame key="frameInset" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Start på vagt" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yVu-J3-OuG">
-                                                    <frame key="frameInset" minX="15" minY="12" width="94" height="19.5"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                    <variation key="heightClass=regular-widthClass=compact">
-                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    </variation>
-                                                </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kGR-ZC-Jvc">
-                                                    <frame key="frameInset" minX="318.5" minY="12" width="41.5" height="19.5"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                    <variation key="heightClass=regular-widthClass=compact">
-                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    </variation>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="177" id="IZH-Ru-DlG">
-                                        <rect key="frame" x="0.0" y="163.5" width="375" height="177"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="140" id="IZH-Ru-DlG">
+                                        <rect key="frame" x="0.0" y="119.5" width="375" height="140"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IZH-Ru-DlG" id="YkV-OL-qr5">
-                                            <frame key="frameInset" width="375" height="176.5"/>
+                                            <frame key="frameInset" width="375" height="139.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="15" translatesAutoresizingMaskIntoConstraints="NO" id="FrM-04-oc1">
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
                                                     <date key="date" timeIntervalSinceReferenceDate="483662038.30551702">
                                                         <!--2016-04-29 22:33:58 +0000-->
                                                     </date>
@@ -689,45 +656,16 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Slut tid" id="pLz-hH-XbK">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="4jm-Rs-8bN" detailTextLabel="KzY-KL-8I1" style="IBUITableViewCellStyleValue1" id="e67-2B-28W">
-                                        <rect key="frame" x="0.0" y="396.5" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="e67-2B-28W" id="HPi-hI-crz">
-                                            <frame key="frameInset" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Slut på vagt" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4jm-Rs-8bN">
-                                                    <frame key="frameInset" minX="15" minY="12" width="86" height="19.5"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                    <variation key="heightClass=regular-widthClass=compact">
-                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    </variation>
-                                                </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KzY-KL-8I1">
-                                                    <frame key="frameInset" minX="318.5" minY="12" width="41.5" height="19.5"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                    <variation key="heightClass=regular-widthClass=compact">
-                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    </variation>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="176" id="Bgb-25-Yrh">
-                                        <rect key="frame" x="0.0" y="440.5" width="375" height="176"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="140" id="Bgb-25-Yrh">
+                                        <rect key="frame" x="0.0" y="315.5" width="375" height="140"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Bgb-25-Yrh" id="GH8-Wt-V9f">
-                                            <frame key="frameInset" width="375" height="175.5"/>
+                                            <frame key="frameInset" width="375" height="139.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="15" translatesAutoresizingMaskIntoConstraints="NO" id="NyR-IO-AJM">
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <frame key="frameInset" minX="-0.5" minY="-0.5" maxX="375.5" maxY="140"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <date key="date" timeIntervalSinceReferenceDate="483662038.30551702">
                                                         <!--2016-04-29 22:33:58 +0000-->
                                                     </date>
@@ -744,6 +682,30 @@
                                                     <include reference="NyR-IO-AJM"/>
                                                 </mask>
                                             </variation>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Note" id="Srg-pE-LuE">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="46" id="i59-Xc-I3i">
+                                        <rect key="frame" x="0.0" y="511.5" width="375" height="46"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="i59-Xc-I3i" id="sbn-Rw-BRi">
+                                            <frame key="frameInset" width="375" height="45.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="F.eks. &quot;Fået vagten af Lilholm&quot;" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="E5W-uS-vok">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="E5W-uS-vok" secondAttribute="trailing" constant="8" id="BeE-M4-3pA"/>
+                                                <constraint firstAttribute="bottom" secondItem="E5W-uS-vok" secondAttribute="bottom" constant="7.5" id="fVL-q6-Txz"/>
+                                                <constraint firstItem="E5W-uS-vok" firstAttribute="leading" secondItem="sbn-Rw-BRi" secondAttribute="leading" constant="8" id="xlp-cv-9xq"/>
+                                                <constraint firstItem="E5W-uS-vok" firstAttribute="top" secondItem="sbn-Rw-BRi" secondAttribute="top" constant="8" id="y0f-mD-bHy"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -768,12 +730,13 @@
                     </navigationItem>
                     <connections>
                         <outlet property="endTimePicker" destination="NyR-IO-AJM" id="iZt-Ga-bgv"/>
+                        <outlet property="noteTextField" destination="E5W-uS-vok" id="H03-eX-u6M"/>
                         <outlet property="startTimePicker" destination="FrM-04-oc1" id="8KU-4a-Q1p"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ob4-MI-7Hh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4839.130434782609" y="1049.1847826086957"/>
+            <point key="canvasLocation" x="4837.6000000000004" y="1048.4257871064469"/>
         </scene>
         <!--Unipro-->
         <scene sceneID="k6y-LS-hXe">

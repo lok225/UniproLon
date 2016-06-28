@@ -13,17 +13,23 @@ class FotexAddVagtVC: UITableViewController {
     
     @IBOutlet weak var startTimePicker: UIDatePicker!
     @IBOutlet weak var endTimePicker: UIDatePicker!
+    @IBOutlet weak var noteTextField: UITextField!
     
     var managedObjectContext: NSManagedObjectContext!
     
     var startTime = NSDate()
     var endTime = NSDate()
+    var note: String?
     
     var vagtToEdit: Vagt? {
         didSet {
             if let vagt = vagtToEdit {
                 startTime = vagt.startTime
                 endTime = vagt.endTime
+                
+                if let note = vagt.note {
+                    self.note = note
+                }
             }
         }
     }
@@ -37,9 +43,11 @@ class FotexAddVagtVC: UITableViewController {
         super.viewWillAppear(true)
         if let _ = vagtToEdit {
             title = "Ændre Vagt"
-//            startTimePicker.date = NSDate()
-//            startTimePicker.date = startTime
-//            endTimePicker.date = endTime
+            startTimePicker.date = startTime
+            endTimePicker.date = endTime
+            if let _ = note {
+                noteTextField.text = note!
+            }
         } else {
             endTimePicker.date = NSDate(timeInterval: 10800, sinceDate: startTimePicker.date)
         }
@@ -62,6 +70,10 @@ class FotexAddVagtVC: UITableViewController {
         vagt.startTime = startTimePicker.date
         vagt.endTime = endTimePicker.date
         vagt.month = vagt.getLonMonth()
+        
+        if let text = noteTextField.text {
+            vagt.note = text
+        }
         
         do {
             try managedObjectContext.save()
