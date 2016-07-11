@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class FotexMainVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class FotexMainVC: UIViewController {
     
     // TODO: Fix DatePicker layout
     // TODO: Tilføj 'Nu' knap
@@ -33,13 +33,13 @@ class FotexMainVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
         let entity = NSEntityDescription.entityForName("Vagt", inManagedObjectContext: self.managedObjectContext)
         fetchRequest.entity = entity
         
-        let sortDescriptor1 = NSSortDescriptor(key: "month", ascending: true)
+        let sortDescriptor1 = NSSortDescriptor(key: "monthNumber", ascending: false)
         let sortDescriptor2 = NSSortDescriptor(key: "startTime", ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor1, sortDescriptor2]
         
         fetchRequest.fetchBatchSize = 20
         
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: "month", cacheName: "Vagter")
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: "monthNumber", cacheName: "Vagter")
         
         fetchedResultsController.delegate = self
         
@@ -56,9 +56,17 @@ class FotexMainVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
     var totalLon: Double = 0.0 {
         didSet {
             lblFøtexTotalLøn.text = String(Int(totalLon)) + ",-"
-            self.antalVagter = vagterFetchedResultsController.sections![thisMonthIndex].numberOfObjects
-            calculateTotalTillæg()
-            calculateAntalTimer()
+            
+            // TODO: - Crash!!!
+            // Ved ingen vagt i thisMonthIndex
+            if thisMonthIndex < vagterFetchedResultsController.sections!.count {
+                self.antalVagter = vagterFetchedResultsController.sections![thisMonthIndex].numberOfObjects
+                calculateTotalTillæg()
+                calculateAntalTimer()
+            } else {
+                
+            }
+            
         }
     }
     var totalTillæg: Double = 0.0 {
@@ -143,102 +151,6 @@ class FotexMainVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
     }
     
     
-    
-    // MARK: - UITableViewDelegate
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        performSegueWithIdentifier("AddVagt", sender: indexPath)
-        
-        let cell = tableView.cellForRowAtIndexPath(indexPath)
-        cell?.selected = false
-    }
-    
-    func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        let header: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView  // Recast your view as a UITableViewHeaderFooterView
-        header.textLabel!.textColor = UIColor.whiteColor() //make the text white
-        header.alpha = 0.8 //make the header transparent
-    }
-    
-    // MARK: - UITableViewDataSource
-    
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return vagterFetchedResultsController.sections!.count
-    }
-    
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
-        let sectionInfo = vagterFetchedResultsController.sections![section]
-        let tempVagter = vagterFetchedResultsController.sections![section].objects as! [Vagt]
-        let vagt = tempVagter[0]
-        
-        let lonInt = Int(getTotalLonInSection(section))
-        let lonString = "\(lonInt),-"
-        let timerString = getAntalTimerAsStringInSection(section) + " t "
-        
-        return sectionInfo.name + ", " + vagt.getLonYear() + " - " + lonString + " " + timerString
-    }
-
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let sectionInfo = vagterFetchedResultsController.sections![section]
-        return sectionInfo.numberOfObjects
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        let cell = UITableViewCell(style: .Value1, reuseIdentifier: nil)
-        
-        configureCell(cell, atIndexPath: indexPath)
-        
-        return cell
-    }
-    
-    func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
-        let vagt = vagterFetchedResultsController.objectAtIndexPath(indexPath) as! Vagt
-        
-        let startTimeFormatter = NSDateFormatter()
-        startTimeFormatter.dateFormat = "EEEE d/M H:mm"
-        let startDate = vagt.startTime!
-        let startTimeString = startTimeFormatter.stringFromDate(startDate).capitalizedString
-        
-        let endTimeFormatter = NSDateFormatter()
-        endTimeFormatter.timeStyle = .ShortStyle
-        endTimeFormatter.dateStyle = .NoStyle
-        let endDate = vagt.endTime!
-        let endTimeString = endTimeFormatter.stringFromDate(endDate)
-        
-        cell.textLabel?.text = startTimeString + " - " + endTimeString
-        cell.detailTextLabel?.text = String(Int(vagt.samletLon)) + ",-"
-        
-        setColorsForCell(cell)
-        
-        // TODO: Speciel farve til vagt
-        // Har ikke besluttet om alle kommende vagter skal være specielle farver, eller om det kun skal være den næste...
-        if NSDate().differenceInMinsWithDate(startDate) > 0 {
-            cell.backgroundColor = lightDarkBlueColor
-        }
-        
-    }
-    
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        
-        if vagterFetchedResultsController.fetchedObjects!.count == 1 {
-            let alert = createAlertWithTitle("Kan ikke slettes", message: "Kan ikke slettes, da det er den sidste")
-            self.presentViewController(alert, animated: true, completion: nil)
-            tableView.editing = false
-        } else if editingStyle == .Delete {
-            let location = vagterFetchedResultsController.objectAtIndexPath(indexPath) as! Vagt
-            managedObjectContext.deleteObject(location)
-            
-            do {
-                try managedObjectContext.save()
-            } catch {
-                fatalError(String(error))
-            }
-        }
-    }
-    
-    
     // MARK: - Navigation
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -287,7 +199,7 @@ class FotexMainVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
                 let vagt = NSEntityDescription.insertNewObjectForEntityForName("Vagt", inManagedObjectContext: managedObjectContext) as! Vagt
                 vagt.startTime = NSDate()
                 vagt.endTime = NSDate(timeInterval: 60, sinceDate: vagt.startTime)
-                vagt.month = vagt.getLonMonth()
+                vagt.monthNumber = vagt.getLonMonthInt()
                 
                 do {
                     try managedObjectContext.save()
@@ -377,28 +289,101 @@ class FotexMainVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
     }
 }
 
-//extension FotexMainVC: UIViewControllerPreviewingDelegate {
-//    
-//    func previewingContext(previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
-//        
-//        guard let indexPath = vagtTableView.indexPathForRowAtPoint(location) else { return nil }
-//        
-//        let addVagtVC: FotexAddVagtVC = FotexAddVagtVC()
-//        addVagtVC.managedObjectContext = self.managedObjectContext
-//        guard let thisVagt = vagterFetchedResultsController.objectAtIndexPath(indexPath) as? Vagt else { return nil }
-//        addVagtVC.vagtToEdit = thisVagt
-//        
-//        let cellRect = vagtTableView.rectForRowAtIndexPath(indexPath)
-//        let sourceRect = previewingContext.sourceView.convertRect(cellRect, fromView: vagtTableView)
-//        previewingContext.sourceRect = sourceRect
-//        
-//        return addVagtVC
-//    }
-//    
-//    func previewingContext(previewingContext: UIViewControllerPreviewing, commitViewController viewControllerToCommit: UIViewController) {
-//        
-//    }
-//}
+extension FotexMainVC: UITableViewDelegate {
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        performSegueWithIdentifier("AddVagt", sender: indexPath)
+        
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        cell?.selected = false
+    }
+    
+    func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView  // Recast your view as a UITableViewHeaderFooterView
+        header.textLabel!.textColor = UIColor.whiteColor() //make the text white
+        header.alpha = 0.8 //make the header transparent
+    }
+    
+}
+
+extension FotexMainVC: UITableViewDataSource {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return vagterFetchedResultsController.sections!.count
+    }
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
+        // let sectionInfo = vagterFetchedResultsController.sections![section]
+        let tempVagter = vagterFetchedResultsController.sections![section].objects as! [Vagt]
+        let vagt = tempVagter[0]
+        
+        let lonInt = Int(getTotalLonInSection(section))
+        let lonString = "\(lonInt),-"
+        let timerString = getAntalTimerAsStringInSection(section) + " t "
+        
+        return vagt.getLonMonthString() + ", " + vagt.getLonYear() + " - " + lonString + " " + timerString
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let sectionInfo = vagterFetchedResultsController.sections![section]
+        return sectionInfo.numberOfObjects
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let cell = UITableViewCell(style: .Value1, reuseIdentifier: nil)
+        
+        configureCell(cell, atIndexPath: indexPath)
+        
+        return cell
+    }
+    
+    func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
+        let vagt = vagterFetchedResultsController.objectAtIndexPath(indexPath) as! Vagt
+        
+        let startTimeFormatter = NSDateFormatter()
+        startTimeFormatter.dateFormat = "EEEE d/M H:mm"
+        let startDate = vagt.startTime!
+        let startTimeString = startTimeFormatter.stringFromDate(startDate).capitalizedString
+        
+        let endTimeFormatter = NSDateFormatter()
+        endTimeFormatter.timeStyle = .ShortStyle
+        endTimeFormatter.dateStyle = .NoStyle
+        let endDate = vagt.endTime!
+        let endTimeString = endTimeFormatter.stringFromDate(endDate)
+        
+        cell.textLabel?.text = startTimeString + " - " + endTimeString
+        cell.detailTextLabel?.text = String(Int(vagt.samletLon)) + ",-"
+        
+        setColorsForCell(cell)
+        
+        // TODO: Speciel farve til vagt
+        // Har ikke besluttet om alle kommende vagter skal være specielle farver, eller om det kun skal være den næste...
+        if NSDate().differenceInMinsWithDate(startDate) > 0 {
+            cell.backgroundColor = lightDarkBlueColor
+        }
+        
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        if vagterFetchedResultsController.fetchedObjects!.count == 1 {
+            let alert = createAlertWithTitle("Kan ikke slettes", message: "Kan ikke slettes, da det er den sidste")
+            self.presentViewController(alert, animated: true, completion: nil)
+            tableView.editing = false
+        } else if editingStyle == .Delete {
+            let location = vagterFetchedResultsController.objectAtIndexPath(indexPath) as! Vagt
+            managedObjectContext.deleteObject(location)
+            
+            do {
+                try managedObjectContext.save()
+            } catch {
+                fatalError(String(error))
+            }
+        }
+    }
+}
 
 extension FotexMainVC: NSFetchedResultsControllerDelegate {
     func controllerWillChangeContent(controller: NSFetchedResultsController) {

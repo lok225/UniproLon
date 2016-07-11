@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11163.2" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11133"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -13,36 +15,36 @@
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Launch Background" translatesAutoresizingMaskIntoConstraints="NO" id="E10-CG-40k"/>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Løn" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Gf-ng-59m">
-                                <rect key="frame" x="150" y="62" width="300" height="55"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="KOm-Ak-Ar0"/>
-                                    <constraint firstAttribute="width" constant="300" id="OEA-6S-Fvf"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="44"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="71"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="KOm-Ak-Ar0"/>
-                                    </mask>
-                                </variation>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="0Gf-ng-59m" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="42" id="CbT-Wn-Bbv"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="0Gf-ng-59m" secondAttribute="bottom" constant="483" id="Du2-nQ-Zvs"/>
-                            <constraint firstItem="0Gf-ng-59m" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="YJ2-0S-66U"/>
+                            <constraint firstItem="0Gf-ng-59m" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="21" id="3lQ-Om-Jft"/>
+                            <constraint firstItem="E10-CG-40k" firstAttribute="centerX" secondItem="0Gf-ng-59m" secondAttribute="centerX" id="5y6-Em-pVL"/>
+                            <constraint firstItem="E10-CG-40k" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="Evh-aW-gDY"/>
+                            <constraint firstItem="E10-CG-40k" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="FO9-jy-z8F"/>
+                            <constraint firstAttribute="trailing" secondItem="E10-CG-40k" secondAttribute="trailing" id="PG1-2r-hNO"/>
+                            <constraint firstItem="0Gf-ng-59m" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="252" id="SI3-of-Dw6"/>
+                            <constraint firstItem="E10-CG-40k" firstAttribute="centerY" secondItem="0Gf-ng-59m" secondAttribute="centerY" id="tQA-2C-ILk"/>
+                            <constraint firstItem="E10-CG-40k" firstAttribute="bottom" secondItem="xb3-aO-Qok" secondAttribute="top" id="zcn-VE-qAY"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52" y="374.66266866566718"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Launch Background" width="414" height="736"/>
+    </resources>
 </document>

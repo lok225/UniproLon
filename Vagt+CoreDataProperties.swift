@@ -17,7 +17,8 @@ extension Vagt {
     @NSManaged var endTime: NSDate!
     @NSManaged var penge: NSNumber
     @NSManaged var startTime: NSDate!
-    @NSManaged var month: String!
+    // @NSManaged var month: String!
     @NSManaged var note: String?
+    @NSManaged var monthNumber: Int
 
 }

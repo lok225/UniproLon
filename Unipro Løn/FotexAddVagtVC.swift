@@ -97,7 +97,7 @@ class FotexAddVagtVC: UITableViewController {
         
         vagt.startTime = startTimePicker.date
         vagt.endTime = endTimePicker.date
-        vagt.month = vagt.getLonMonth()
+        vagt.monthNumber = vagt.getLonMonthInt()
         
         if let text = noteTextField.text {
             vagt.note = text
@@ -171,6 +171,21 @@ class FotexAddVagtVC: UITableViewController {
         
         newStartTimeComp.setValue(startTimes[index], forComponent: .Hour)
         newEndTimeComp.setValue(endTimes[index], forComponent: .Hour)
+        
+        switch startTimes[index] {
+        case 17,18:
+            newStartTimeComp.setValue(15, forComponent: .Minute)
+        default:
+            break
+        }
+        
+        switch endTimes[index] {
+        case 20,21:
+            newEndTimeComp.setValue(15, forComponent: .Minute)
+        default:
+            break
+        }
+        
         startTimePicker.date = calendar.dateFromComponents(newStartTimeComp)!
         endTimePicker.date = calendar.dateFromComponents(newEndTimeComp)!
     }
@@ -209,6 +224,8 @@ class FotexAddVagtVC: UITableViewController {
     }
     
     func setSelectedSegment(startTimes: [Int], endTimes: [Int]) {
+        
+        // TODO: Ikke opdateret til minutter
         
         let startTime = startTimePicker.date
         let endTime = endTimePicker.date

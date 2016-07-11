@@ -23,7 +23,7 @@ class Vagt: NSManagedObject {
     
     var satser: Double = 0.0
     
-    // TODO: Lav et interval for hver 60. minut, hvor jeg laver et array med timer. Derefter kan jeg tilføje penge, under satserne.
+    // Note: Pauser efter under 4 eller ved 4 timer?
     
     var vagtITimer: Double {
         
@@ -108,8 +108,7 @@ class Vagt: NSManagedObject {
         return lon
     }
     
-    func getLonMonth() -> String {
-    
+    func getLonMonthInt() -> Int {
         let calendar = NSCalendar.currentCalendar()
         let dayComponent = calendar.component(.Day, fromDate: startTime)
         var monthComponent = calendar.component(.Month, fromDate: startTime)
@@ -118,7 +117,12 @@ class Vagt: NSManagedObject {
             monthComponent += 1
         }
         
-        let monthString = monthComponent.getMonthAsString()
+        return monthComponent
+    }
+    
+    func getLonMonthString() -> String {
+        
+        let monthString = getLonMonthInt().getMonthAsString()
         
         return monthString
     }

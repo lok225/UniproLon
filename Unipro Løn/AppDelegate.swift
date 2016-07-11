@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,8 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         NSUserDefaults.standardUserDefaults().setValue(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
-
-        print(NSUserDefaults.standardUserDefaults().boolForKey("kFotexFirstTime"))
         
         let tabBarController = window!.rootViewController as! UITabBarController
         
@@ -33,27 +32,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let fotexController = fotexNavigationController.topViewController as! FotexMainVC
         fotexController.managedObjectContext = managedObjectContext
         
-        
-        let notificationSettings = UIUserNotificationSettings(forTypes: [.Alert, .Sound], categories: nil)
-        UIApplication.sharedApplication().registerUserNotificationSettings( notificationSettings)
-
-        let localNotification = UILocalNotification()
-        localNotification.alertBody = "Send Mail"
-        let components = NSDateComponents()
-        components.year = 2016
-        components.month = 1
-        components.day = 19
-        components.hour = 20
-        components.minute = 0
-    
-        let currentCalendar = NSCalendar.currentCalendar()
-        let date = currentCalendar.dateFromComponents(components)
-        localNotification.fireDate = date!
-        localNotification.repeatInterval = NSCalendarUnit.Month
-        localNotification.timeZone = NSTimeZone.defaultTimeZone()
-        localNotification.soundName = UILocalNotificationDefaultSoundName
-        
-        UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+        if #available(iOS 10.0, *) {
+            
+            let center = UNUserNotificationCenter.currentNotificationCenter()
+            
+            center.requestAuthorizationWithOptions([UNAuthorizationOptions.Alert, .Sound, .Badge], completionHandler: { (granted, error) in
+                
+                if granted == true {
+                    let content = UNMutableNotificationContent()
+                    content.title = "Send Mail"
+                    content.body = "Det er tid til at sende en mail til Jeanette."
+                    content.sound = UNNotificationSound.defaultSound()
+                    
+                    let components = NSDateComponents()
+                    components.setValue(18, forComponent: .Day)
+                    components.setValue(16, forComponent: .Hour)
+                    
+                    let trigger = UNCalendarNotificationTrigger(dateMatchingComponents: components, repeats: true)
+                    let request = UNNotificationRequest(identifier: "SendMail", content: content, trigger: trigger)
+                    
+                    center.addNotificationRequest(request, withCompletionHandler: nil)
+                    
+                } else {
+                    createAlertWithTitle("Notifikationer slået fra", message: "Gå til indstillinger for at slå notifikationer til.")
+                }
+            })
+        }
         
         return true
     }
@@ -69,6 +73,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         case "com.martinlok.lon.sendMail":
             let uniproNavigationController = tabBarController.viewControllers![0] as! UINavigationController
             let uniproController = uniproNavigationController.viewControllers[0] as! UniproMainVC
+            
+            tabBarController.selectedIndex = 0
             uniproController.sendSpecielMail()
         case "com.martinlok.lon.nyVagt":
             let fotexNavigationController = tabBarController.viewControllers![1] as! UINavigationController
