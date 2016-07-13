@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11163.2" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="HKT-LY-zna">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11163.2" systemVersion="16A238m" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="HKT-LY-zna">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11133"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -105,11 +105,11 @@
                                                 <variation key="default">
                                                     <mask key="constraints">
                                                         <exclude reference="4XN-IF-4mr"/>
+                                                        <exclude reference="5DX-nZ-d7i"/>
                                                         <exclude reference="TR5-5t-ZUc"/>
                                                         <exclude reference="t4b-on-Z7t"/>
                                                         <exclude reference="Yw4-rq-Hmj"/>
                                                         <exclude reference="ZHx-sM-fXg"/>
-                                                        <exclude reference="5DX-nZ-d7i"/>
                                                     </mask>
                                                 </variation>
                                                 <variation key="widthClass=compact" ambiguous="YES">
@@ -118,11 +118,11 @@
                                                 <variation key="heightClass=regular-widthClass=compact">
                                                     <mask key="constraints">
                                                         <include reference="4XN-IF-4mr"/>
+                                                        <include reference="5DX-nZ-d7i"/>
                                                         <include reference="TR5-5t-ZUc"/>
                                                         <include reference="t4b-on-Z7t"/>
                                                         <include reference="Yw4-rq-Hmj"/>
                                                         <include reference="ZHx-sM-fXg"/>
-                                                        <include reference="5DX-nZ-d7i"/>
                                                     </mask>
                                                 </variation>
                                             </stackView>
@@ -438,24 +438,73 @@
             </objects>
             <point key="canvasLocation" x="2244" y="1050.75"/>
         </scene>
-        <!--View Controller-->
+        <!--Græs Løn-->
         <scene sceneID="a8c-AG-KHX">
             <objects>
-                <viewController id="iG7-YQ-oau" sceneMemberID="viewController">
+                <viewController id="iG7-YQ-oau" customClass="GrasMainVC" customModule="Unipro_Løn_temp_caseinsensitive_rename" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IdZ-Q6-8Yx"/>
                         <viewControllerLayoutGuide type="bottom" id="PVK-Yc-mNs"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Qt8-CE-wwf">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JtY-56-9fY">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="iG7-YQ-oau" id="cgX-8H-lXK"/>
+                                    <outlet property="delegate" destination="iG7-YQ-oau" id="A0y-kx-aMu"/>
+                                </connections>
+                            </tableView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="uRh-Bp-1TA">
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Manglende løn:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZF6-OZ-t0b">
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="800,-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uAg-vQ-H1b">
+                                        <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="uRh-Bp-1TA" firstAttribute="centerX" secondItem="JtY-56-9fY" secondAttribute="centerX" id="Cch-uH-gRe"/>
+                            <constraint firstAttribute="trailing" secondItem="JtY-56-9fY" secondAttribute="trailing" id="Lsk-Wy-bcs"/>
+                            <constraint firstItem="JtY-56-9fY" firstAttribute="leading" secondItem="Qt8-CE-wwf" secondAttribute="leading" id="McV-r6-Frx"/>
+                            <constraint firstItem="JtY-56-9fY" firstAttribute="top" secondItem="uRh-Bp-1TA" secondAttribute="bottom" constant="44" id="NfU-Jk-1mQ"/>
+                            <constraint firstItem="uRh-Bp-1TA" firstAttribute="top" secondItem="Qt8-CE-wwf" secondAttribute="top" constant="20" symbolic="YES" id="Xgb-GD-WgG"/>
+                            <constraint firstAttribute="bottom" secondItem="JtY-56-9fY" secondAttribute="bottom" id="p6A-7N-4ie"/>
+                            <constraint firstItem="uRh-Bp-1TA" firstAttribute="centerX" secondItem="Qt8-CE-wwf" secondAttribute="centerX" id="qUt-Lb-Z0b"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="tzh-MS-zrd"/>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <navigationItem key="navigationItem" title="Græs Løn" id="tzh-MS-zrd">
+                        <barButtonItem key="leftBarButtonItem" systemItem="compose" id="d8M-eg-ueL">
+                            <connections>
+                                <action selector="shareButtonPressed:" destination="iG7-YQ-oau" id="Uzd-Wm-D21"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="pMg-Ql-uQh">
+                            <connections>
+                                <action selector="plusButtonPressed:" destination="iG7-YQ-oau" id="CBK-UH-3F6"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="grasTableView" destination="JtY-56-9fY" id="wQw-bC-Kbo"/>
+                        <outlet property="lblGrasLon" destination="uAg-vQ-H1b" id="bgr-Op-aBJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3nX-2a-pet" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3111" y="1721.25"/>
+            <point key="canvasLocation" x="3109.5999999999999" y="1720.3898050974515"/>
         </scene>
         <!--Føtex Løn-->
         <scene sceneID="rVG-L7-whq">
