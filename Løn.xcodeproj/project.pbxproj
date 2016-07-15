@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		E303B0581C4CF0F800D96ADC /* ExtraFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E303B0571C4CF0F800D96ADC /* ExtraFunctions.swift */; };
-		E30D26CF1CFB43A300324070 /* Vagt+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30D26CE1CFB43A300324070 /* Vagt+CoreDataProperties.swift */; };
 		E3598B6C1C46496A006754C0 /* UniproHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3598B6B1C46496A006754C0 /* UniproHistoryVC.swift */; };
 		E35F5D701CD41BE500768311 /* FotexMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35F5D6F1CD41BE500768311 /* FotexMainVC.swift */; };
 		E3983B4B1D36FCFD004AAB78 /* GrasMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3983B4A1D36FCFD004AAB78 /* GrasMainVC.swift */; };
@@ -40,7 +39,6 @@
 
 /* Begin PBXFileReference section */
 		E303B0571C4CF0F800D96ADC /* ExtraFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtraFunctions.swift; sourceTree = "<group>"; };
-		E30D26CE1CFB43A300324070 /* Vagt+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Vagt+CoreDataProperties.swift"; path = "../Vagt+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E312CEF11D0E9A640013AF61 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 		E3598B6B1C46496A006754C0 /* UniproHistoryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UniproHistoryVC.swift; sourceTree = "<group>"; };
 		E35F5D6F1CD41BE500768311 /* FotexMainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = FotexMainVC.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -92,7 +90,6 @@
 			isa = PBXGroup;
 			children = (
 				E3FEE5371CE37FE600ED0CF2 /* CoreDataModel.xcdatamodeld */,
-				E30D26CE1CFB43A300324070 /* Vagt+CoreDataProperties.swift */,
 				E3D7F3461CE4610900B691D9 /* Vagt.swift */,
 			);
 			name = "Core Data";
@@ -235,7 +232,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E30D26CF1CFB43A300324070 /* Vagt+CoreDataProperties.swift in Sources */,
 				E3D61F341C0DB71A0022550B /* MonthItem.swift in Sources */,
 				E3983B4B1D36FCFD004AAB78 /* GrasMainVC.swift in Sources */,
 				E3FEE5361CE37B7F00ED0CF2 /* FotexAddVagtVC.swift in Sources */,
@@ -360,12 +356,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "Unipro Løn/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.martinlok.lon;
 				PRODUCT_NAME = "Unipro Løn.temp_caseinsensitive_rename";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -375,6 +373,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "Unipro Løn/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;

@@ -32,6 +32,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let fotexController = fotexNavigationController.topViewController as! FotexMainVC
         fotexController.managedObjectContext = managedObjectContext
         
+        let grasNavigationController = tabBarController.viewControllers![2] as! UINavigationController
+        let grasController = grasNavigationController.topViewController as! GrasMainVC
+        grasController.managedObjectContext = managedObjectContext
+        
         if #available(iOS 10.0, *) {
             
             let center = UNUserNotificationCenter.currentNotificationCenter()

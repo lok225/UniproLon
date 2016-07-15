@@ -9,6 +9,16 @@
 import Foundation
 import CoreData
 
+extension Vagt {
+    
+    @NSManaged var endTime: NSDate!
+    @NSManaged var penge: NSNumber
+    @NSManaged var startTime: NSDate!
+    @NSManaged var note: String?
+    @NSManaged var monthNumber: Int
+    
+}
+
 class Vagt: NSManagedObject {
     
     private let calendar: NSCalendar = NSCalendar.currentCalendar()

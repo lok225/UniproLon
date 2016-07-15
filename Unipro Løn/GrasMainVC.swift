@@ -20,6 +20,27 @@ class GrasMainVC: UIViewController {
     
     var addView: AddDateView!
     
+    var managedObjectContext: NSManagedObjectContext!
+    
+//    lazy var grasFetchedResultsController: NSFetchedResultsController = {
+//        let fetchRequest = NSFetchRequest()
+//        
+//        let entity = NSEntityDescription.entityForName("Vagt", inManagedObjectContext: self.managedObjectContext)
+//        fetchRequest.entity = entity
+//        
+//        let sortDescriptor1 = NSSortDescriptor(key: "monthNumber", ascending: false)
+//        let sortDescriptor2 = NSSortDescriptor(key: "startTime", ascending: false)
+//        fetchRequest.sortDescriptors = [sortDescriptor1, sortDescriptor2]
+//        
+//        fetchRequest.fetchBatchSize = 20
+//        
+//        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: "monthNumber", cacheName: "Vagter")
+//        
+//        fetchedResultsController.delegate = self
+//        
+//        return fetchedResultsController
+//    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
